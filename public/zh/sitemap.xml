@@ -28,11 +28,11 @@
     <lastmod>2024-12-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:1313/teaching/fedseg/</loc>
+    <loc>http://localhost:1313/tags/java-springcloud/</loc>
     <lastmod>2024-12-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:1313/tags/pytorch/</loc>
+    <loc>http://localhost:1313/teaching/springcloud/</loc>
     <lastmod>2024-12-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -56,28 +56,56 @@
     <lastmod>2024-10-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>http://localhost:1313/post/my-plan/</loc>
+    <lastmod>2024-07-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2024-07-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/markdown/</loc>
+    <lastmod>2024-07-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/java/</loc>
+    <lastmod>2024-06-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/teaching/javaroute/</loc>
+    <lastmod>2024-06-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/teaching/fedseg/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/pytorch/</loc>
+    <lastmod>2024-05-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>http://localhost:1313/projects/</loc>
     <lastmod>2024-05-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:1313/post/get-started/</loc>
-    <lastmod>2023-10-27T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/springboot/</loc>
+    <lastmod>2023-12-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:1313/tags/academic/</loc>
-    <lastmod>2023-10-27T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/teaching/takeout/</loc>
+    <lastmod>2023-12-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2023-10-27T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/mysql/</loc>
+    <lastmod>2023-11-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:1313/tags/hugo-blox/</loc>
-    <lastmod>2023-10-27T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/teaching/mysqldbdesign/</loc>
+    <lastmod>2023-11-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:1313/tags/markdown/</loc>
-    <lastmod>2023-10-27T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/project/jilijingzhi/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>http://localhost:1313/experience/</loc>

@@ -1,7 +1,7 @@
 ---
 title: FedSeg论文阅读报告
 summary: "FedSeg: Class-Heterogeneous Federated Learning for Semantic Segmentation论文阅读报告"
-date: 2024-12-20
+date: 2024-05-20
 type: docs
 math: true
 tags:

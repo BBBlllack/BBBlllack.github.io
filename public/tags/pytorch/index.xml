@@ -5,7 +5,7 @@
     <link>http://localhost:1313/tags/pytorch/</link>
       <atom:link href="http://localhost:1313/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
     <description>Pytorch</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Fri, 20 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Mon, 20 May 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://localhost:1313/media/icon_hu7729264130191091259.png</url>
       <title>Pytorch</title>
@@ -15,7 +15,7 @@
     <item>
       <title>FedSeg论文阅读报告</title>
       <link>http://localhost:1313/teaching/fedseg/</link>
-      <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 20 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/teaching/fedseg/</guid>
       <description>&lt;h2 id=&#34;fedseg-class-heterogeneous-federated-learning-for-semantic-segmentation&#34;&gt;&lt;strong&gt;《FedSeg: Class-Heterogeneous Federated Learning for Semantic Segmentation》&lt;/strong&gt;&lt;/h2&gt;
 &lt;h2 id=&#34;文献阅读报告&#34;&gt;&lt;strong&gt;文献阅读报告&lt;/strong&gt;&lt;/h2&gt;

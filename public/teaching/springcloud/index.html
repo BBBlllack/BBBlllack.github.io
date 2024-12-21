@@ -1,0 +1,1608 @@
+<!doctype html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: 2024年12月21日 --><html lang="zh-Hans" dir="ltr"
+      data-wc-theme-default="system">
+  
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="Hugo Blox Builder 0.3.1" />
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="BBBlllack" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="在学习SpringCloud记录的一些信息, 但是学到后面就懒得记了...实在不好意思。" />
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="http://localhost:1313/teaching/springcloud/" />
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/themes/emerald.min.css" />
+  
+
+  
+  
+    
+    <link href="/dist/wc.min.css" rel="stylesheet" />
+  
+
+  
+  
+  
+
+  
+
+  <script>
+     
+    window.hbb = {
+       defaultTheme: document.documentElement.dataset.wcThemeDefault,
+       setDarkTheme: () => {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
+      },
+       setLightTheme: () => {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+      }
+    }
+
+    console.debug(`Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`);
+
+    if ("wc-color-theme" in localStorage) {
+      localStorage.getItem("wc-color-theme") === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+    } else {
+      window.hbb.defaultTheme === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      if (window.hbb.defaultTheme === "system") {
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      }
+    }
+  </script>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      let checkboxes = document.querySelectorAll('li input[type=\'checkbox\'][disabled]');
+      checkboxes.forEach(e => {
+        e.parentElement.parentElement.classList.add('task-list');
+      });
+
+      
+      const liNodes = document.querySelectorAll('.task-list li');
+      liNodes.forEach(nodes => {
+        let textNodes = Array.from(nodes.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim().length > 1);
+        if (textNodes.length > 0) {
+          const span = document.createElement('label');
+          textNodes[0].after(span);  
+          span.appendChild(nodes.querySelector('input[type=\'checkbox\']'));
+          span.appendChild(textNodes[0]);
+        }
+      });
+    });
+  </script>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  <link rel="icon" type="image/png" href="/media/icon_hu3247630877640252165.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu4166356570829923896.png" />
+
+  <link rel="canonical" href="http://localhost:1313/teaching/springcloud/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@GetResearchDev" />
+    <meta property="twitter:creator" content="@GetResearchDev" />
+  
+  <meta property="og:site_name" content="个人主页" />
+  <meta property="og:url" content="http://localhost:1313/teaching/springcloud/" />
+  <meta property="og:title" content="SpringCloud学习笔记 | 个人主页" />
+  <meta property="og:description" content="在学习SpringCloud记录的一些信息, 但是学到后面就懒得记了...实在不好意思。" /><meta property="og:image" content="http://localhost:1313/teaching/springcloud/featured.png" />
+    <meta property="twitter:image" content="http://localhost:1313/teaching/springcloud/featured.png" /><meta property="og:locale" content="zh-Hans" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-12-20T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-12-20T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  <title>SpringCloud学习笔记 | 个人主页</title>
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <style>
+    @font-face {
+      font-family: 'Inter var';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(/dist/font/Inter.var.woff2) format(woff2);
+    }
+  </style>
+
+  
+
+  
+  
+
+
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+    
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/dist/pagefind/pagefind-ui.be766eb419317a14ec769d216e9779bfe8f3737c80e780f4ba0dafb57a41a482.css" integrity="sha256-vnZutBkxehTsdp0hbpd5v&#43;jzc3yA54D0ug2vtXpBpII=" />
+
+
+<script src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js" integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="></script>
+
+
+<script>window.hbb.pagefind = {"baseUrl":"/"};</script>
+
+<style>
+  html.dark {
+    --pagefind-ui-primary: #eeeeee;
+    --pagefind-ui-text: #eeeeee;
+    --pagefind-ui-background: #152028;
+    --pagefind-ui-border: #152028;
+    --pagefind-ui-tag: #152028;
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      baseUrl: window.hbb.pagefind.baseUrl,
+      bundlePath: window.hbb.pagefind.baseUrl + "pagefind/",
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    let element = document.getElementById('search');
+    let trigger = document.getElementById('search_toggle');
+
+    if (trigger) {
+      trigger.addEventListener('click', () => {
+        element.classList.toggle('hidden');
+        element.querySelector("input").value = ""
+        element.querySelector("input").focus()
+
+        if (!element.classList.contains('hidden')) {
+          let clear_trigger = document.querySelector('.pagefind-ui__search-clear');
+
+          if (clear_trigger && !clear_trigger.hasAttribute('listenerOnClick')) {
+            clear_trigger.setAttribute('listenerOnClick', 'true');
+
+            clear_trigger.addEventListener('click', () => {
+              element.classList.toggle('hidden');
+            });
+          }
+        }
+
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  <script
+    defer
+    src="/js/hugo-blox-zh.min.js"
+    integrity=""
+  ></script>
+
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+      
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+      
+    
+  
+
+
+
+
+</head>
+
+  <body class="dark:bg-hb-dark dark:text-white page-wrapper" id="top">
+    <div id="page-bg"></div>
+    <div class="page-header sticky top-0 z-30">
+      
+      
+      
+        
+        
+        
+          <header id="site-header" class="header">
+  <nav class="navbar px-3 flex justify-left">
+    <div class="order-0 h-100">
+      
+      <a class="navbar-brand" href="/" title="个人主页">
+        BBBlllack
+      </a>
+    </div>
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Open Menu</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Close Menu</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+
+    
+    
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 justify-left
+      ">
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/"
+        >我的主页</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#news"
+        >我的博客</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/experience/"
+        >教育经历</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/projects/"
+        >项目经历</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/teaching/"
+        >我的文章</a
+        >
+      </li>
+      
+      
+      
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+
+      
+      
+      
+      <button
+        aria-label="search"
+        class="text-black hover:text-primary  inline-block px-3 text-xl dark:text-white"
+        id="search_toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" fill="currentColor"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+      </button>
+      
+
+      
+      
+      <div class="px-3 text-black hover:text-primary-700 dark:text-white dark:hover:text-primary-300
+            [&.active]:font-bold [&.active]:text-black/90 dark:[&.active]:text-white">
+        <button class="theme-toggle mt-1" accesskey="t" title="appearance">
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class="dark:hidden">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class=" dark:block [&:not(dark)]:hidden">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+      
+
+      
+      
+
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<div id="search" class="hidden p-3"></div>
+
+
+        
+      
+    </div>
+    <div class="page-body  my-10">
+      <div class="mx-auto flex max-w-screen-xl">
+  
+
+  
+  <div class="hb-sidebar-mobile-menu fixed inset-0 z-10 bg-white dark:bg-black/80 hidden"></div>
+
+
+
+<aside class="hb-sidebar-container max-lg:[transform:translate3d(0,-100%,0)] lg:sticky">
+  
+  <div class="px-4 pt-4 lg:hidden">
+    
+    
+  </div>
+  <div class="hb-scrollbar lg:h-[calc(100vh-var(--navbar-height))]">
+    <ul class="flex flex-col gap-1 lg:hidden">
+      
+      
+        <li class="open"><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/"
+    
+  >Teaching
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/springboot/"
+    
+  >SpringBoot笔记文档
+    </a>
+              
+            </li><li class="flex flex-col open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/teaching/springcloud/"
+    
+  >SpringCloud学习笔记
+    </a>
+  
+    <ul class="hb-sidebar-mobile-toc"><li>
+              <a
+                href="#"
+                class="hb-docs-link"
+              ></a>
+            </li>
+          </ul>
+  
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/javaroute/"
+    
+  >Java后端开发学习资料
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/fedseg/"
+    
+  >FedSeg论文阅读报告
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/takeout/"
+    
+  >软件编程综合实践 - 外卖平台设计
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/mysqldbdesign/"
+    
+  >Mysql数据库设计
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/"
+    
+  >Projects
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/platforms/"
+    
+  >Alist私人云盘
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/overleaf/"
+    
+  >Overleaf个人站
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/jilijingzhi/"
+    
+  >河北工业大学文创
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/"
+    
+  >Blog
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/my-plan/"
+    
+  >🎉 我的大四计划
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/projects/"
+    
+  >Projects
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/experience/"
+    
+  >Experience
+    </a></li>
+    </ul>
+
+    <ul class="flex flex-col gap-1 max-lg:hidden">
+        
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/springboot/"
+    
+  >SpringBoot笔记文档
+    </a></li>
+        <li class="open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/teaching/springcloud/"
+    
+  >SpringCloud学习笔记
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/javaroute/"
+    
+  >Java后端开发学习资料
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/fedseg/"
+    
+  >FedSeg论文阅读报告
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/takeout/"
+    
+  >软件编程综合实践 - 外卖平台设计
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/mysqldbdesign/"
+    
+  >Mysql数据库设计
+    </a></li>
+        
+      </ul>
+    </div>
+
+</aside>
+  
+
+<nav class="hb-toc order-last hidden w-64 shrink-0 xl:block print:hidden px-4" aria-label="table of contents">
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div class="hb-scrollbar text-sm [hyphens:auto] sticky top-16 overflow-y-auto pr-4 pt-6 max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] -mr-4 rtl:-ml-4"><p class="mb-4 font-semibold tracking-tight">在本页</p><ul>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#1-%e7%89%88%e6%9c%ac%e5%85%bc%e5%ae%b9%e9%97%ae%e9%a2%98">1. 版本兼容问题</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#11-cloud%e5%92%8cboot">1.1 cloud和boot</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#2-eureka%e6%b3%a8%e5%86%8c%e4%b8%ad%e5%bf%83">2. Eureka注册中心</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#21-eureka%e6%9c%8d%e5%8a%a1%e7%ab%af%e6%90%ad%e5%bb%ba">2.1 Eureka服务端搭建</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#22-eureka-%e5%ae%a2%e6%88%b7%e7%ab%af%e6%b3%a8%e5%86%8c">2.2 Eureka 客户端注册</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#23-%e6%9c%8d%e5%8a%a1%e7%9a%84%e6%8b%89%e5%8f%96">2.3 服务的拉取</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#24-%e8%b4%9f%e8%bd%bd%e5%9d%87%e8%a1%a1">2.4 负载均衡</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#3-naocs-%e6%b3%a8%e5%86%8c%e4%b8%ad%e5%bf%83">3. Naocs 注册中心</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#31-%e9%85%8d%e7%bd%ae%e6%96%b9%e5%bc%8f">3.1 配置方式</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#32-%e7%bb%9f%e4%b8%80%e9%85%8d%e7%bd%ae%e7%ae%a1%e7%90%86">3.2 统一配置管理</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#33-%e8%87%aa%e5%8a%a8%e9%85%8d%e7%bd%ae%e5%88%b7%e6%96%b0">3.3 自动配置刷新</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-12 rtl:pr-12 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#331-%e6%96%b9%e6%b3%95%e4%b8%80">3.3.1 方法一</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-12 rtl:pr-12 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#332-%e6%96%b9%e6%b3%95%e4%ba%8c">3.3.2 方法二</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#34-%e7%8e%af%e5%a2%83%e5%85%b1%e4%ba%ab">3.4 环境共享</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#4-http%e5%ae%a2%e6%88%b7%e7%ab%affeign">4. http客户端Feign</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#41-%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8">4.1 基本使用</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#42-%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96">4.2 性能优化</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#5-%e7%bb%9f%e4%b8%80%e7%bd%91%e5%85%b3gateway">5. 统一网关Gateway</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#51-%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8">5.1 基本使用</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#52-%e5%85%a8%e5%b1%80%e8%bf%87%e6%bb%a4%e5%99%a8">5.2 全局过滤器</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#53-cors%e8%a7%a3%e5%86%b3%e8%b7%a8%e5%9f%9f%e8%af%b7%e6%b1%82">5.3 CORS解决跨域请求</a>
+      </li></ul>
+
+  
+  
+    
+    
+  
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  </nav>
+
+
+  <article class="flex w-full min-w-0 min-h-[calc(100vh-var(--navbar-height))] justify-center break-words pb-8 pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+    <main class="prose prose-slate lg:prose-xl dark:prose-invert w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
+      <div class="mb-1">
+        <div class="mt-1.5 flex items-center gap-1 overflow-hidden text-sm text-gray-500 dark:text-gray-400">
+      <div class="whitespace-nowrap transition-colors min-w-[24px] overflow-hidden text-ellipsis hover:text-gray-900 dark:hover:text-gray-100">
+        <a href="http://localhost:1313/teaching/">Teaching</a>
+      </div><svg class="w-3.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8.25 4.5l7.5 7.5l-7.5 7.5"/></svg><div class="whitespace-nowrap font-medium text-gray-700 dark:text-gray-100">SpringCloud学习笔记</div>
+</div>
+
+      </div>
+
+      <div class="content text-base">
+        <h1>SpringCloud学习笔记</h1>
+        <h3 id="1-版本兼容问题">1. 版本兼容问题</h3>
+<h4 id="11-cloud和boot">1.1 cloud和boot</h4>
+<p>兼容方式如下所示</p>
+<table>
+  <thead>
+      <tr>
+          <th>Spring Cloud 版本</th>
+          <th>Spring Boot 版本范围</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>2021.0.1-SNAPSHOT</td>
+          <td>&gt;=2.6.4-SNAPSHOT and &lt;2.7.0-M1</td>
+      </tr>
+      <tr>
+          <td>2021.0.0</td>
+          <td>&gt;=2.6.1 and &lt;2.6.4-SNAPSHOT</td>
+      </tr>
+      <tr>
+          <td>2021.0.0-RC1</td>
+          <td>&gt;=2.6.0-RC1 and &lt;2.6.1</td>
+      </tr>
+      <tr>
+          <td>2021.0.0-M3</td>
+          <td>&gt;=2.6.0-M3 and &lt;2.6.0-RC1</td>
+      </tr>
+      <tr>
+          <td>2021.0.0-M1</td>
+          <td>&gt;=2.6.0-M1 and &lt;2.6.0-M3</td>
+      </tr>
+      <tr>
+          <td>2020.0.5</td>
+          <td>&gt;=2.4.0.M1 and &lt;2.6.0-M1</td>
+      </tr>
+      <tr>
+          <td>Hoxton.SR12</td>
+          <td>&gt;=2.2.0.RELEASE and &lt;2.4.0.M1</td>
+      </tr>
+      <tr>
+          <td>Hoxton.BUILD-SNAPSHOT</td>
+          <td>&gt;=2.2.0.BUILD-SNAPSHOT</td>
+      </tr>
+      <tr>
+          <td>Hoxton.M2</td>
+          <td>&gt;=2.2.0.M4 and &lt;=2.2.0.M5</td>
+      </tr>
+      <tr>
+          <td>Greenwich.BUILD-SNAPSHO</td>
+          <td>&gt;=2.1.9.BUILD-SNAPSHOT and &lt;2.2.0.M4</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="2-eureka注册中心">2. Eureka注册中心</h3>
+<h4 id="21-eureka服务端搭建">2.1 Eureka服务端搭建</h4>
+<p>eureka的搭建分三步走，如下所示：</p>
+<ul>
+<li>导入相关依赖</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>org.springframework.cloud<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><ul>
+<li>编写启动类，添加注解 @EnableEurekaServer</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.shj.eureka</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.SpringApplication</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.cloud.netflix.eureka.server.EnableEurekaServer</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@SpringBootApplication</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@EnableEurekaServer</span><span class="w"> </span><span class="c1">// 此注解启动了eureka</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EurekaApplication</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">EurekaApplication</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>添加配置文件信息</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">10086</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">application</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">eurekaserver</span><span class="w"> </span><span class="c"># 应用程序名</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">eureka</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">client</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">service-url</span><span class="p">:</span><span class="w"> </span><span class="c"># eureka 的地址信息</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">defaultZone</span><span class="p">:</span><span class="w"> </span><span class="l">http://127.0.0.1:10086/eureka</span><span class="w">
+</span></span></span></code></pre></div><h4 id="22-eureka-客户端注册">2.2 Eureka 客户端注册</h4>
+<p>eureka的客户端注册分两边进行，如下所示：</p>
+<ul>
+<li>添加依赖信息</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>org.springframework.cloud<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><ul>
+<li>添加配置文件信息</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">application</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">userservice</span><span class="w"> </span><span class="c"># 配置应用程序名称</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">eureka</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">client</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">service-url</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">defaultZone</span><span class="p">:</span><span class="w"> </span><span class="l">http://127.0.0.1:10086/eureka</span><span class="w"> </span><span class="c"># 配置注册到的eureka的服务器地址</span><span class="w">
+</span></span></span></code></pre></div><h4 id="23-服务的拉取">2.3 服务的拉取</h4>
+<p>服务拉取是基于服务名称获取服务列表，然后再对服务列表做负载均衡，分如下两步</p>
+<ul>
+<li>修改访问的url路径，用服务名代替ip和端口</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;order&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderController</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">OrderService</span><span class="w"> </span><span class="n">orderService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">RestTemplate</span><span class="w"> </span><span class="n">restTemplate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&#34;{orderId}&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Order</span><span class="w"> </span><span class="nf">queryOrderByUserId</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&#34;orderId&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">orderId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderService</span><span class="p">.</span><span class="na">queryOrderById</span><span class="p">(</span><span class="n">orderId</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      	</span><span class="c1">// 在此使用服务名代替ip和端口</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;http://userservice/user/&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">getUserId</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// String url = &#34;http://localhost:8081/user/&#34; + order.getUserId();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">restTemplate</span><span class="p">.</span><span class="na">getForObject</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">User</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setUser</span><span class="p">(</span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 根据id查询订单并返回</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">order</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>对RestTemplate使用@LoadBalanced注解做负载均衡</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@MapperScan</span><span class="p">(</span><span class="s">&#34;cn.itcast.order.mapper&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@SpringBootApplication</span><span class="w"> </span><span class="c1">// 内含@configuration注解，因此无需单独添加 @configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderApplication</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">OrderApplication</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@LoadBalanced</span><span class="w"> </span><span class="c1">// 此注解完成了负载均衡</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">RestTemplate</span><span class="w"> </span><span class="nf">restTemplate</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RestTemplate</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h4 id="24-负载均衡">2.4 负载均衡</h4>
+<h3 id="3-naocs-注册中心">3. Naocs 注册中心</h3>
+<h4 id="31-配置方式">3.1 配置方式</h4>
+<p>不同于eureka，nacos是一个单独的客户端，需要进行安装，默认端口为8848，默认访问地址为 http://localhost:8848/nacos/index.html</p>
+<p>配置nacos客户端的方法分如下两步：</p>
+<ul>
+<li>添加nacos客户端依赖</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- nacos客户端依赖包 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>com.alibaba.cloud<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><ul>
+<li>在yml文件中添加相应的配置</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cloud</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">nacos</span><span class="p">:</span><span class="w"> </span><span class="c"># nacos属于spring的配置</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">server-addr</span><span class="p">:</span><span class="w"> </span><span class="l">localhost:8848</span><span class="w"> </span><span class="c"># 默认地址也是这个</span><span class="w">
+</span></span></span></code></pre></div><h4 id="32-统一配置管理">3.2 统一配置管理</h4>
+<p>统一配置管理是在nacos中读取application.yml文件的方式（nacos中配置文件一般不会这样起名），分成如下步骤：</p>
+<ul>
+<li>导入配置坐标依赖</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- nacos客户端依赖包 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>com.alibaba.cloud<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- nacos配置管理依赖包 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>com.alibaba.cloud<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><ul>
+<li>引入<strong>bootstrap.yml</strong>文件，在其配置nacos的配置</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">application</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">userservice</span><span class="w"> </span><span class="c"># 服务名</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">profiles</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">active</span><span class="p">:</span><span class="w"> </span><span class="l">dev</span><span class="w"> </span><span class="c"># 开发环境</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cloud</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">nacos</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">server-addr</span><span class="p">:</span><span class="w"> </span><span class="l">localhost:8848</span><span class="w"> </span><span class="c"># nacos地址</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">file-extension</span><span class="p">:</span><span class="w"> </span><span class="l">yaml</span><span class="w"> </span><span class="c"># nacos中配置文件扩展名</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>在nacos中配置管理新建配置文件，命名要遵守规则 要以name-active.file- extension作为文件名，在其配置需要热更新的配置，而非全部配置</li>
+</ul>
+<h4 id="33-自动配置刷新">3.3 自动配置刷新</h4>
+<p>我们希望在nacos中更改了对应模块的配置文件之后，无需重启服务即可感知到文件的变化，此时需要用到自动配置刷新，有两种方法实现。</p>
+<h5 id="331-方法一">3.3.1 方法一</h5>
+<p>在使用@value注解注入属性之后，在对应的类添加注解 @RefreshScope：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Slf4j</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;/user&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RefreshScope</span><span class="w"> </span><span class="c1">// 此注解即可感知到配置文件的变化</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserController</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Value</span><span class="p">(</span><span class="s">&#34;${pattern.dataformat}&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">dataformat</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&#34;/now&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">now</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">now</span><span class="p">().</span><span class="na">format</span><span class="p">(</span><span class="n">DateTimeFormatter</span><span class="p">.</span><span class="na">ofPattern</span><span class="p">(</span><span class="n">dataformat</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h5 id="332-方法二">3.3.2 方法二</h5>
+<ul>
+<li>使用一个类加载所有配置属性，配合注解@ConfigurationProperties</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Data</span><span class="w"> </span><span class="c1">// lombok</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Component</span><span class="w"> </span><span class="c1">// 注册为bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@ConfigurationProperties</span><span class="p">(</span><span class="n">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;pattern&#34;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 此注解实现了配置的自动刷新</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatternProprties</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// 当prefix和属性名拼接在配置文件中能查到对应的，即可注入</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">dataformat</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>在controller中的使用</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Slf4j</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;/user&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RefreshScope</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserController</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="n">userService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">PatternProprties</span><span class="w"> </span><span class="n">patternProprties</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&#34;/now&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">now</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">now</span><span class="p">().</span><span class="na">format</span><span class="p">(</span><span class="n">DateTimeFormatter</span><span class="p">.</span><span class="na">ofPattern</span><span class="p">(</span><span class="n">patternProprties</span><span class="p">.</span><span class="na">getDataformat</span><span class="p">()));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h4 id="34-环境共享">3.4 环境共享</h4>
+<p>配置文件中的重复部分有时写到一个文件中即可，此时会产生环境共享的需求，程序从nacos会读取<strong>服务名.yaml，服务名-环境.yaml</strong>文件，本地还有application.yml文件，此时优先级为 <strong>服务名-环境.yaml &gt; 服务名.yaml &gt; 本地配置</strong>，共享的配置佩在 <strong>服务名.yaml</strong> 文件中即可。</p>
+<h3 id="4-http客户端feign">4. http客户端Feign</h3>
+<h4 id="41-基本使用"><strong>4.1 基本使用</strong></h4>
+<p>使用feign时分如下几步：</p>
+<ul>
+<li>导入feign的依赖</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--feign的依赖--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>org.springframework.cloud<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-openfeign<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><ul>
+<li>在启动类上使用注解 @EnableFeignClients 打开feign</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@MapperScan</span><span class="p">(</span><span class="s">&#34;cn.itcast.order.mapper&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@SpringBootApplication</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@EnableFeignClients</span><span class="w"> </span><span class="c1">// 此注解打开了feign</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderApplication</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">OrderApplication</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>编写feign类，调用方法既是发送http请求</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Component</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@FeignClient</span><span class="p">(</span><span class="s">&#34;userservice&#34;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 服务名</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">UserClient</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&#34;/user/{id}&#34;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 请求的路径</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>测试使用</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;order&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderController</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">OrderService</span><span class="w"> </span><span class="n">orderService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">UserClient</span><span class="w"> </span><span class="n">userClient</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&#34;/{orderId}&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Order</span><span class="w"> </span><span class="nf">queryOrderByUserId</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&#34;orderId&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">orderId</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderService</span><span class="p">.</span><span class="na">queryOrderById</span><span class="p">(</span><span class="n">orderId</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">// 在此调用方法即可发送http请求获取user数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userClient</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">order</span><span class="p">.</span><span class="na">getUserId</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setUser</span><span class="p">(</span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">order</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h4 id="42-性能优化">4.2 性能优化</h4>
+<p>可以通过设置feign的日志级别和底层http的实现方式（默认为jdk自带的，性能相对较差，不支持连接池技术）来优化性能，步骤如下所示：</p>
+<ul>
+<li>日志级别的设置</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">feign</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">client</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">logger-level</span><span class="p">:</span><span class="w"> </span><span class="l">full</span><span class="w"> </span><span class="c"># 全部打印， 一般设为 BASIC比较好</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>
+<p>更改底层实现方式</p>
+<ul>
+<li>导入feign-httpclient的依赖</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--        httpClient的依赖--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>io.github.openfeign<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>feign-httpclient<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><ul>
+<li>在application.yml文件中进行相关配置</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">feign</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">client</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">logger-level</span><span class="p">:</span><span class="w"> </span><span class="l">basic</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">httpclient</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">max-connections</span><span class="p">:</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="c"># 最大连接数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">max-connections-per-route</span><span class="p">:</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="c"># 每个路径的最大连接数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 开启feign对httpclient的支持</span><span class="w">
+</span></span></span></code></pre></div></li>
+</ul>
+<h3 id="5-统一网关gateway">5. 统一网关Gateway</h3>
+<h4 id="51-基本使用">5.1 基本使用</h4>
+<p>gateway作为网关，一般用于全部请求到来之前的拦截，之后可以根据访问路径做权限校验，负载均衡等，基本使用方式如下：</p>
+<ul>
+<li>添加依赖(注意要添加nacos将gateway注册到nacos)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- nacos客户端依赖包 --&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>com.alibaba.cloud<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- gateway依赖 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>org.springframework.cloud<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-gateway<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><ul>
+<li>在application.yml中进行配置</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">application</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">gateway</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cloud</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">nacos</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">server-addr</span><span class="p">:</span><span class="w"> </span><span class="l">localhost:8848</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">gateway</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">routes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">user-service</span><span class="w"> </span><span class="c"># 路由的唯一标识</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="l">lb://userservice</span><span class="w"> </span><span class="c"># lb代表复杂均衡</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">predicates</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">Path=/user/**</span><span class="w"> </span><span class="c"># 代表拦截user/下所有请求</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">order-service</span><span class="w"> </span><span class="c"># 路由的唯一标识</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="l">lb://orderservice</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">predicates</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">Path=/order/**</span><span class="w"> </span><span class="c"># 代表拦截order/下所有请求</span><span class="w">
+</span></span></span></code></pre></div><h4 id="52-全局过滤器">5.2 全局过滤器</h4>
+<p>gateway提供的过滤器有时无法满足一些开发中的特殊要求，此时需要用到全局过滤器，实现方式如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Component</span><span class="w"> </span><span class="c1">// 注意要定义为bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Filter1</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">GlobalFilter</span><span class="p">,</span><span class="w"> </span><span class="n">Ordered</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Mono</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">ServerWebExchange</span><span class="w"> </span><span class="n">exchange</span><span class="p">,</span><span class="w"> </span><span class="n">GatewayFilterChain</span><span class="w"> </span><span class="n">chain</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ServerHttpRequest</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exchange</span><span class="p">.</span><span class="na">getRequest</span><span class="p">();</span><span class="w"> </span><span class="c1">// 获取请求对象，注意和servlet的不一样</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">MultiValueMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">queryParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getQueryParams</span><span class="p">();</span><span class="w"> </span><span class="c1">// 参数map</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queryParams</span><span class="p">.</span><span class="na">getFirst</span><span class="p">(</span><span class="s">&#34;username&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s">&#34;zhangsan&#34;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">username</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">chain</span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">exchange</span><span class="p">);</span><span class="w"> </span><span class="c1">// 放行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">exchange</span><span class="p">.</span><span class="na">getResponse</span><span class="p">().</span><span class="na">setStatusCode</span><span class="p">(</span><span class="n">HttpStatus</span><span class="p">.</span><span class="na">METHOD_NOT_ALLOWED</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">exchange</span><span class="p">.</span><span class="na">getResponse</span><span class="p">().</span><span class="na">setComplete</span><span class="p">();</span><span class="w"> </span><span class="c1">// 拦截</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// 此方法为实现了ordered接口之后要实现的，数字越小代表过滤器优先级越高</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h4 id="53-cors解决跨域请求">5.3 CORS解决跨域请求</h4>
+<p>gateway中解决跨域请求的方式是基于cors，只需要在yml文件中添加如下配置即可</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">gateway</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">globalcors</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">add-to-simple-url-handler-mapping</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 允许options请求</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">cors-configurations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">&#39;[/**]&#39;</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">allowed-origins</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;*&#34;</span><span class="w"> </span><span class="c"># 允许跨域网址</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">allowed-headers</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;*&#34;</span><span class="w"> </span><span class="c"># 允许跨域请求头</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">allowed-methods</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;*&#34;</span><span class="w"> </span><span class="c"># 允许跨域方法</span><span class="w">
+</span></span></span></code></pre></div>
+      </div>
+
+      
+  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2024-12-20T00:00:00.000Z">
+    <span>最近更新于</span>
+    12月 20, 2024</time>
+      
+      
+  
+    
+    
+    
+      
+      
+    
+<div class="pt-1 no-prose w-full">
+  <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+  <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
+    <div class="">
+      
+        <a class="group flex no-underline" href="/teaching/springboot/">
+          <span
+            class="mt-[-0.3rem] me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+          ><span class="ltr:inline rtl:hidden">&larr;</span></span>
+          <span class="flex flex-col">
+            <span
+              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+            >SpringBoot笔记文档</span>
+            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+              
+                12月 21, 2024
+              
+            </span>
+          </span>
+        </a>
+      
+    </div>
+    <div class="">
+      
+        <a class="group flex text-right no-underline" href="/teaching/javaroute/">
+          <span class="flex flex-col">
+            <span
+              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+            >Java后端开发学习资料</span
+            >
+            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+              
+                6月 1, 2024
+              
+            </span>
+          </span>
+          <span
+            class="mt-[-0.3rem] ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+          ><span class="ltr:inline">&rarr;</span></span>
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+      
+
+
+
+    </main>
+  </article>
+</div>
+
+    </div>
+    <div class="page-footer">
+      <footer class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <p class="powered-by text-center">
+    © 2024 Me.
+  </p>
+  
+
+
+
+
+
+  <p class="powered-by text-center">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      由<a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a>支持发布——免费<a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">开源</a>网站，为创作者赋能。
+    
+  </p>
+
+</footer>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
