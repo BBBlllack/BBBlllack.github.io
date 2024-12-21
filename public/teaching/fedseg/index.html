@@ -1,0 +1,1607 @@
+<!doctype html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: 2024年12月21日 --><html lang="zh-Hans" dir="ltr"
+      data-wc-theme-default="system">
+  
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="Hugo Blox Builder 0.3.1" />
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="BBBlllack" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="FedSeg: Class-Heterogeneous Federated Learning for Semantic Segmentation论文阅读报告" />
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="http://localhost:1313/teaching/fedseg/" />
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/themes/emerald.min.css" />
+  
+
+  
+  
+    
+    <link href="/dist/wc.min.css" rel="stylesheet" />
+  
+
+  
+  
+  
+
+  
+
+  <script>
+     
+    window.hbb = {
+       defaultTheme: document.documentElement.dataset.wcThemeDefault,
+       setDarkTheme: () => {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
+      },
+       setLightTheme: () => {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+      }
+    }
+
+    console.debug(`Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`);
+
+    if ("wc-color-theme" in localStorage) {
+      localStorage.getItem("wc-color-theme") === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+    } else {
+      window.hbb.defaultTheme === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      if (window.hbb.defaultTheme === "system") {
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      }
+    }
+  </script>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      let checkboxes = document.querySelectorAll('li input[type=\'checkbox\'][disabled]');
+      checkboxes.forEach(e => {
+        e.parentElement.parentElement.classList.add('task-list');
+      });
+
+      
+      const liNodes = document.querySelectorAll('.task-list li');
+      liNodes.forEach(nodes => {
+        let textNodes = Array.from(nodes.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim().length > 1);
+        if (textNodes.length > 0) {
+          const span = document.createElement('label');
+          textNodes[0].after(span);  
+          span.appendChild(nodes.querySelector('input[type=\'checkbox\']'));
+          span.appendChild(textNodes[0]);
+        }
+      });
+    });
+  </script>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  <link rel="icon" type="image/png" href="/media/icon_hu3247630877640252165.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu4166356570829923896.png" />
+
+  <link rel="canonical" href="http://localhost:1313/teaching/fedseg/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@GetResearchDev" />
+    <meta property="twitter:creator" content="@GetResearchDev" />
+  
+  <meta property="og:site_name" content="个人主页" />
+  <meta property="og:url" content="http://localhost:1313/teaching/fedseg/" />
+  <meta property="og:title" content="FedSeg论文阅读报告 | 个人主页" />
+  <meta property="og:description" content="FedSeg: Class-Heterogeneous Federated Learning for Semantic Segmentation论文阅读报告" /><meta property="og:image" content="http://localhost:1313/teaching/fedseg/featured.jpg" />
+    <meta property="twitter:image" content="http://localhost:1313/teaching/fedseg/featured.jpg" /><meta property="og:locale" content="zh-Hans" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-12-20T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-12-20T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  <title>FedSeg论文阅读报告 | 个人主页</title>
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <style>
+    @font-face {
+      font-family: 'Inter var';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(/dist/font/Inter.var.woff2) format(woff2);
+    }
+  </style>
+
+  
+
+  
+  
+
+
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+    
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/dist/pagefind/pagefind-ui.be766eb419317a14ec769d216e9779bfe8f3737c80e780f4ba0dafb57a41a482.css" integrity="sha256-vnZutBkxehTsdp0hbpd5v&#43;jzc3yA54D0ug2vtXpBpII=" />
+
+
+<script src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js" integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="></script>
+
+
+<script>window.hbb.pagefind = {"baseUrl":"/"};</script>
+
+<style>
+  html.dark {
+    --pagefind-ui-primary: #eeeeee;
+    --pagefind-ui-text: #eeeeee;
+    --pagefind-ui-background: #152028;
+    --pagefind-ui-border: #152028;
+    --pagefind-ui-tag: #152028;
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      baseUrl: window.hbb.pagefind.baseUrl,
+      bundlePath: window.hbb.pagefind.baseUrl + "pagefind/",
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    let element = document.getElementById('search');
+    let trigger = document.getElementById('search_toggle');
+
+    if (trigger) {
+      trigger.addEventListener('click', () => {
+        element.classList.toggle('hidden');
+        element.querySelector("input").value = ""
+        element.querySelector("input").focus()
+
+        if (!element.classList.contains('hidden')) {
+          let clear_trigger = document.querySelector('.pagefind-ui__search-clear');
+
+          if (clear_trigger && !clear_trigger.hasAttribute('listenerOnClick')) {
+            clear_trigger.setAttribute('listenerOnClick', 'true');
+
+            clear_trigger.addEventListener('click', () => {
+              element.classList.toggle('hidden');
+            });
+          }
+        }
+
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="/dist/lib/katex/katex.min.505d5f829022bb7b4f24dfee0aa1141cd7bba67afe411d1240335f820960b5c3.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr&#43;QR0SQDNfgglgtcM=" />
+  
+  
+  <script defer src="/dist/lib/katex/katex.min.dc84b296ec3e884de093158f760fd9d45b6c7abe58b5381557f4e138f46a58ae.js" integrity="sha256-3ISyluw&#43;iE3gkxWPdg/Z1Ftser5YtTgVV/ThOPRqWK4="></script>
+  
+  
+  
+  
+  <script defer src="/js/katex-renderer.6579ec9683211cfb952064aedf3a3baea5eeb17a061775b32b70917474637c80.js" integrity="sha256-ZXnsloMhHPuVIGSu3zo7rqXusXoGF3WzK3CRdHRjfIA="></script>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  <script
+    defer
+    src="/js/hugo-blox-zh.min.js"
+    integrity=""
+  ></script>
+
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+      
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+      
+    
+  
+
+
+
+
+</head>
+
+  <body class="dark:bg-hb-dark dark:text-white page-wrapper" id="top">
+    <div id="page-bg"></div>
+    <div class="page-header sticky top-0 z-30">
+      
+      
+      
+        
+        
+        
+          <header id="site-header" class="header">
+  <nav class="navbar px-3 flex justify-left">
+    <div class="order-0 h-100">
+      
+      <a class="navbar-brand" href="/" title="个人主页">
+        BBBlllack
+      </a>
+    </div>
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Open Menu</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Close Menu</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+
+    
+    
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 justify-left
+      ">
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/"
+        >我的主页</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#news"
+        >我的博客</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/experience/"
+        >教育经历</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/projects/"
+        >项目经历</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/teaching/"
+        >我的文章</a
+        >
+      </li>
+      
+      
+      
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+
+      
+      
+      
+      <button
+        aria-label="search"
+        class="text-black hover:text-primary  inline-block px-3 text-xl dark:text-white"
+        id="search_toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" fill="currentColor"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+      </button>
+      
+
+      
+      
+      <div class="px-3 text-black hover:text-primary-700 dark:text-white dark:hover:text-primary-300
+            [&.active]:font-bold [&.active]:text-black/90 dark:[&.active]:text-white">
+        <button class="theme-toggle mt-1" accesskey="t" title="appearance">
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class="dark:hidden">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class=" dark:block [&:not(dark)]:hidden">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+      
+
+      
+      
+
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<div id="search" class="hidden p-3"></div>
+
+
+        
+      
+    </div>
+    <div class="page-body  my-10">
+      <div class="mx-auto flex max-w-screen-xl">
+  
+
+  
+  <div class="hb-sidebar-mobile-menu fixed inset-0 z-10 bg-white dark:bg-black/80 hidden"></div>
+
+
+
+<aside class="hb-sidebar-container max-lg:[transform:translate3d(0,-100%,0)] lg:sticky">
+  
+  <div class="px-4 pt-4 lg:hidden">
+    
+    
+  </div>
+  <div class="hb-scrollbar lg:h-[calc(100vh-var(--navbar-height))]">
+    <ul class="flex flex-col gap-1 lg:hidden">
+      
+      
+        <li class="open"><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/"
+    
+  >Teaching
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/springboot/"
+    
+  >SpringBoot笔记文档
+    </a>
+              
+            </li><li class="flex flex-col open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/teaching/fedseg/"
+    
+  >FedSeg论文阅读报告
+    </a>
+  
+    <ul class="hb-sidebar-mobile-toc"><li>
+              <a
+                href="#fedseg-class-heterogeneous-federated-learning-for-semantic-segmentation"
+                class="hb-docs-link"
+              >&lt;strong&gt;《FedSeg: Class-Heterogeneous Federated Learning for Semantic Segmentation》&lt;/strong&gt;</a>
+            </li>
+          <li>
+              <a
+                href="#%e6%96%87%e7%8c%ae%e9%98%85%e8%af%bb%e6%8a%a5%e5%91%8a"
+                class="hb-docs-link"
+              >&lt;strong&gt;文献阅读报告&lt;/strong&gt;</a>
+            </li>
+          </ul>
+  
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/"
+    
+  >Projects
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/platforms/"
+    
+  >Alist私人云盘
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/overleaf/"
+    
+  >Overleaf个人站
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/projects/"
+    
+  >Projects
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/"
+    
+  >Blog
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/get-started/"
+    
+  >🎉 Easily create your own simple yet highly customizable blog
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/experience/"
+    
+  >Experience
+    </a></li>
+    </ul>
+
+    <ul class="flex flex-col gap-1 max-lg:hidden">
+        
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/springboot/"
+    
+  >SpringBoot笔记文档
+    </a></li>
+        <li class="open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/teaching/fedseg/"
+    
+  >FedSeg论文阅读报告
+    </a></li>
+        
+      </ul>
+    </div>
+
+</aside>
+  
+
+<nav class="hb-toc order-last hidden w-64 shrink-0 xl:block print:hidden px-4" aria-label="table of contents">
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div class="hb-scrollbar text-sm [hyphens:auto] sticky top-16 overflow-y-auto pr-4 pt-6 max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] -mr-4 rtl:-ml-4"><p class="mb-4 font-semibold tracking-tight">在本页</p><ul>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#fedseg-class-heterogeneous-federated-learning-for-semantic-segmentation">《FedSeg: Class-Heterogeneous Federated Learning for Semantic Segmentation》</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#%e6%96%87%e7%8c%ae%e9%98%85%e8%af%bb%e6%8a%a5%e5%91%8a">文献阅读报告</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#1-%e8%ae%ba%e6%96%87%e6%91%98%e8%a6%81">1. 论文摘要</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#2-%e8%ae%ba%e6%96%87%e5%bc%95%e8%a8%80">2. 论文引言</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#3-fedseg%e6%96%b9%e6%b3%95">3. FedSeg方法</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#31-fedavg">3.1. FedAvg</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-12 rtl:pr-12 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%ab%af%e6%89%a7%e8%a1%8c">服务器端执行</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-12 rtl:pr-12 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#%e5%ae%a2%e6%88%b7%e7%ab%af%e6%89%a7%e8%a1%8c">客户端执行</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-12 rtl:pr-12 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#fedavg%e7%ae%97%e6%b3%95%e7%89%b9%e7%82%b9">FedAvg算法特点</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#32-%e5%88%9d%e6%ad%a5%e5%ae%9a%e4%b9%89">3.2 初步定义</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#33-backce-loss">3.3. BackCE Loss</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#34-local-to-global-pixel-contrastive-learning">3.4. Local-to-Global Pixel Contrastive Learning</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#4-%e5%ae%9e%e9%aa%8c%e9%aa%8c%e8%af%81">4. 实验验证</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#41-%e6%95%b0%e6%8d%ae%e8%ae%be%e7%bd%ae">4.1 数据设置</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#42-%e6%b6%88%e8%9e%8d%e5%ae%9e%e9%aa%8c%e5%92%8c%e5%af%b9%e6%af%94%e5%ae%9e%e9%aa%8c">4.2 消融实验和对比实验</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#43-iid%e6%95%b0%e6%8d%ae%e9%9b%86%e5%ae%9e%e9%aa%8c%e5%92%8closs%e5%af%b9%e6%af%94">4.3 IID数据集实验和LOSS对比</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#44-fedseg%e6%95%88%e6%9e%9c">4.4 FedSeg效果</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#45-clients%e7%9a%84%e5%bd%b1%e5%93%8d">4.5 clients的影响</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#5-%e4%bb%a3%e7%a0%81%e5%a4%8d%e7%8e%b0">5. 代码复现</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#6-%e8%ae%ba%e6%96%87%e6%80%bb%e7%bb%93">6. 论文总结</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#7-%e5%ad%a6%e4%b9%a0%e5%bf%83%e5%be%97">7. 学习心得</a>
+      </li></ul>
+
+  
+  
+    
+    
+  
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  </nav>
+
+
+  <article class="flex w-full min-w-0 min-h-[calc(100vh-var(--navbar-height))] justify-center break-words pb-8 pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+    <main class="prose prose-slate lg:prose-xl dark:prose-invert w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
+      <div class="mb-1">
+        <div class="mt-1.5 flex items-center gap-1 overflow-hidden text-sm text-gray-500 dark:text-gray-400">
+      <div class="whitespace-nowrap transition-colors min-w-[24px] overflow-hidden text-ellipsis hover:text-gray-900 dark:hover:text-gray-100">
+        <a href="http://localhost:1313/teaching/">Teaching</a>
+      </div><svg class="w-3.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8.25 4.5l7.5 7.5l-7.5 7.5"/></svg><div class="whitespace-nowrap font-medium text-gray-700 dark:text-gray-100">FedSeg论文阅读报告</div>
+</div>
+
+      </div>
+
+      <div class="content text-base">
+        <h1>FedSeg论文阅读报告</h1>
+        <h2 id="fedseg-class-heterogeneous-federated-learning-for-semantic-segmentation"><strong>《FedSeg: Class-Heterogeneous Federated Learning for Semantic Segmentation》</strong></h2>
+<h2 id="文献阅读报告"><strong>文献阅读报告</strong></h2>
+<h3 id="1-论文摘要">1. 论文摘要</h3>
+<p>作者的工作主要集中在提出一种新的联邦学习方法<code>FedSeg</code>，用于解决类别异构语义分割任务中的挑战。主要贡献如下：</p>
+<ol>
+<li><strong>问题识别</strong>：识别并指出了现有联邦学习在语义分割任务中的挑战，特别是在非独立同分布（non-IID）数据和类别异构的情况下。</li>
+<li><strong>改进损失函数</strong>：提出了一种修改版的交叉熵损失函数<code>BackLoss</code>，以纠正客户端局部优化问题并解决前景-背景不一致的问题。</li>
+<li><strong>像素级对比学习</strong>：引入像素级对比学习<code>Pixel Contrastive Learning</code>，增强本地像素嵌入与全局语义空间的一致性。</li>
+<li><strong>实验验证</strong>：在<code>Cityscapes</code>、<code>CamVID</code>、<code>PascalVOC</code>和<code>ADE20k</code>四个语义分割基准上进行了大量实验，验证了FedSeg方法的有效性。</li>
+</ol>
+<h3 id="2-论文引言">2. 论文引言</h3>
+<p>首先，语义分割是将给定图像中的每个像素分配唯一的语义标签的任务。这意味着对图像中的每个像素进行分类，以确定其所属的语义类别。语义分割任务中有两个问题。</p>
+<ol>
+<li>像素级别的数据很难获取，并且模型的训练需要大量的数据</li>
+<li>合作训练有泄漏用户隐私的风险，例如居住照片可能泄漏用户的居住地，车辆行驶图片可能泄漏用户的个人数据等。</li>
+</ol>
+<p>基于上述两个问题，在语义分割任务中引入联邦学习是很有必要的。之后来简单介绍一下什么是联邦学习。</p>
+<p><strong>联邦学习</strong>（<strong>Federated Learning</strong>，<strong>FL</strong>）是一种新兴的分布式机器学习方法(<strong>之后简称为FL</strong>)，其核心理念是通过多个参与方（如智能设备、机构等）在不共享本地数据的情况下，协同训练一个全局模型。联邦学习旨在解决数据隐私、安全性和数据孤岛等问题，使各方能够共同受益于联合模型的优势，而无需交换或集中存储敏感数据，<strong>图1</strong>是联邦学习的基本流程。</p>
+<img src="文献阅读报告.assets/image-20240605193242221.png" alt="image-20240605193242221" style="zoom:50%;" />
+<center>图1 - 联邦学习</center>
+<p>联邦学习通常包含四个步骤：</p>
+<ol>
+<li><strong>本地训练</strong>：本地训练是联邦学习的起点。在这一阶段，每个参与的客户端（例如，个人设备、组织服务器）在本地数据集上训练模型。此时数据不会离开本地设备，保持数据的隐私性和安全性。</li>
+<li>模型更新：在本地训练完成后，每个客户端将其训练得到的模型参数发送回中央服务器或协调节点。这样可以确保中央服务器能够获得来自不同客户端的最新模型信息。</li>
+<li>模型聚合：中央服务器接收到所有客户端的模型参数后，将这些参数进行聚合，生成一个新的全局模型。这一步是联邦学习的核心步骤，旨在整合各个客户端的训练成果，提升模型的整体性能。</li>
+<li>模型部署：在模型聚合完成后，更新后的全局模型被部署到各个客户端，以便在下一个训练周期中使用。这个步骤确保每个客户端都能够从最新的全局模型中受益，从而不断提高模型的性能。</li>
+</ol>
+<p>本论文就是在本地训练过程中进行研究。本篇论文聚焦于面向语义分割的类异构联邦学习，然而，先前的大多数FL方法在分类任务上进行评估，而很少有工作专注于更具挑战性的语义分割。相较于分类任务，语义分割具有特定且更为严重的问题。首先，语义分割图像更加复杂，像素级别的注释极其耗时。客户端通常会对频繁出现的类别进行标注，而忽略稀有类别。</p>
+<p>之后来看一下联邦学习用于语义分割中的两个基本问题以及作者提出的解决办法。</p>
+<img src="文献阅读报告.assets/image-20240605194922976.png" alt="image-20240605194922976" style="zoom:50%;" />
+<center>图2 - 前景后景不一致导致的本地最优化方向不同</center>
+<p>首先，由于不同客户端的数据分布是非独立同分布的，一个客户端忽略的类别可能在另一个客户端是前景类别。对于<strong>图2</strong>中，Person在1中被忽略，但是在2中被识别为主要类。Cat在2中被忽略，但是在3中被识别为主要类。跨客户端的前景-背景不一致性导致了分散的优化方向，并降低了聚合的全局模型的能力。</p>
+<p>针对此问题，作者修改了交叉熵损失函数，通过聚合背景类别的概率来校正本地更新中的“客户端漂移”，缓解了前景-背景不一致性问题。</p>
+<img src="文献阅读报告.assets/image-20240605195002874.png" alt="image-20240605195002874" style="zoom:50%;" />
+<center>图2 - 无法学习到不同语义类别在像素嵌入空间中的相对位置导致的嵌入空间混乱</center>
+<p>其次，对于非独立同分布的情况，复杂的密集预测使得本地优化方向与全局最优点的距离比分类任务更远，导致收敛性较差。从像素嵌入空间的角度来看，每个客户端的本地更新无法学习到不同语义类别在像素嵌入空间中的相对位置，从而在全局聚合后导致混乱的嵌入空间。如图所示，各种不同的语义类别无法在全局空间中被正确的区分开来。</p>
+<p>针对此问题，作者进一步引入了一个本地到全局的像素级对比学习损失，强化本地像素嵌入空间与全局语义空间的接近程度，提高了全局模型的收敛性。</p>
+<p>总的来说，作者做出来如下贡献：</p>
+<ul>
+<li>
+<p>系统地研究了联邦学习在语义分割任务中应用于多种类别情况下的情况，特别是类异构问题。</p>
+</li>
+<li>
+<p>提出了一个强有力的基准模型，采用了简单修改的CE损失和局部到全局的度量学习方法，以缓解客户端之间的类别分布漂移问题。</p>
+</li>
+<li>
+<p>在四个语义分割数据集上提供了基准结果，评估了FedSeg在语义分割联邦学习问题上的表现。希望这项工作能够激励联邦学习社区进一步研究联邦学习问题。</p>
+</li>
+</ul>
+<h3 id="3-fedseg方法">3. FedSeg方法</h3>
+<h4 id="31-fedavg">3.1. FedAvg</h4>
+<p>作者采用了<code>FedAvg</code>作为基本的联邦学习方法。<strong>图3</strong>展示了FedAvg的基本流程和方法。</p>
+<img src="文献阅读报告.assets/image-20240605200646280.png" alt="image-20240605200646280" style="zoom:50%;" />
+<center>图3 - FedAvg的基本流程和方法</center>
+<p><strong>FedAvg（Federated Averaging）</strong> 是一种用于联邦学习（Federated Learning, FL）的基本算法。其目标是在保证数据隐私的前提下，通过多个客户端（Clients）协同训练一个共享的全局模型。Avg指的是模型聚合的时候平均所有客户端权重，算法基本流程如下：</p>
+<p><strong>参数定义</strong></p>
+<ul>
+<li>K ：客户端总数</li>
+<li>B ：本地小批量数据的大小</li>
+<li>E ：本地训练的轮数</li>
+<li>η：学习率</li>
+<li>C ：选择客户端的比例（例如图中C=0.1 表示每轮选取10%的客户端）</li>
+</ul>
+<h5 id="服务器端执行">服务器端执行</h5>
+<ol>
+<li>
+$$w_0$$</li>
+<li>
+<p><strong>进行多轮训练</strong>（每轮训练包括以下步骤）：</p>
+<ul>
+<li>计算参与本轮训练的客户端数量 $$m$$，公式为 $$m \leftarrow \max(C \cdot K, 1)$$</li>
+<li>随机选取 $$m$$ 个客户端构成集合 $$S_t$$</li>
+<li>对于每个客户端 $$k \in S_t$$，并行地执行以下步骤：
+<ul>
+<li>客户端 $$k$$ 进行本地模型更新 $$w_{t+1}^k \leftarrow \text{ClientUpdate}(k, w_t)$$</li>
+</ul>
+</li>
+<li>聚合所有客户端的本地模型参数，更新全局模型参数：
+$$
+     w_{t+1} \leftarrow \sum_{k=1}^K \frac{n_k}{n} w_{t+1}^k
+     $$
+其中，$$n_k$$ 是客户端 $$k$$ 的本地数据量，$$n$$ 是所有客户端数据量的总和。</li>
+</ul>
+</li>
+</ol>
+<h5 id="客户端执行">客户端执行</h5>
+$$k$$<p> 上运行，具体步骤如下：</p>
+<ol>
+<li>
+$$P_k$$$$B$$<p> 的小批量数据</p>
+</li>
+<li>
+$$E$$<p>）：</p>
+<ul>
+<li>对于每一小批量数据 $$b \in \mathcal{B}$$，执行以下步骤：
+<ul>
+<li>使用批量数据 $$b$$ 更新模型参数 $$w$$：
+$$
+       w \leftarrow w - \eta \nabla \ell(w; b)
+       $$
+其中，$$\ell(w; b)$$ 是批量数据 $$b$$ 上的损失函数。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+$$w$$<p> 返回给服务器。</p>
+</li>
+</ol>
+<h5 id="fedavg算法特点"><strong>FedAvg算法特点</strong></h5>
+<ul>
+<li><strong>数据隐私</strong>：数据从不离开客户端，保护了用户的隐私。</li>
+<li><strong>分布式训练</strong>：多个客户端并行进行本地训练，提高了训练效率。</li>
+<li><strong>非独立同分布（Non-IID）数据处理</strong>：FedAvg能够处理不同客户端上的非独立同分布的数据，尽管这会对模型收敛带来挑战。</li>
+</ul>
+<img src="文献阅读报告.assets/image-20240605202333348.png" alt="image-20240605202333348" style="zoom:50%;" />
+<center>图4 - FedAvg实验评估</center>
+<p>上面左边四张图中，横坐标为通信轮次，纵坐标为准确率。可以看到，FedAvg可以用较少的通信轮次达到较高的准确率。右边图中，横坐标为通信轮次，纵坐标为训练损失，可以看到，FedAvg在通信轮次较少的时候可以达到一个相对较低的损失。以上实验证明了<strong>FedAvg是可行的。可以用少的通信轮次达到较好的效果</strong>。</p>
+<h4 id="32-初步定义">3.2 初步定义</h4>
+$$
+arg min_{w} L(w) = \sum_{i=1}^{N} \frac{|D_i|}{D_i} L_i(w)
+$$$$
+w=\sum_{i=1}^{N}\frac{|D_i|}{|D|}w_i
+$$<p>
+其中 $w_i$ 表示客户端 $i$ 的本地参数。作者提出对本地优化过程进行修改，以在不交换额外信息的情况下提升性能。</p>
+<h4 id="33-backce-loss">3.3. BackCE Loss</h4>
+$$
+L_{ce}(x,y)=-\frac{1}{|P|}\sum_{j\in P}logq_x(j,y_i)
+$$<p>
+其中 $y_j$ 是像素 $j$ 的真实标签，$P$ 是标注像素的集合。在联邦学习（FL）中，本地客户端只有总类的一部分，导致本地优化方向不一致，全局收敛性差。</p>
+$$
+L_i^{backce}(x,y)=-\frac{1}{|P|}\sum_{j\in P}log\hat{q_x}(j,y_j)
+$$$$
+\hat{q}_x(j, y_j) = \begin{cases}
+q_x(j, y_j) & \text{if } y_j \in C_i, \\
+\sum_{c \in C \setminus C_i} q_x(j, c) & \text{if } y_j \notin C_i,
+\end{cases}
+$$<p>其中： $C_i$ 是客户端 $i$ 本地数据集中的类别集合。 $C$ 是全局类别集合。 $q_x(j, c)$ 是像素 $j$ 被预测为类别 $c$ 的概率。</p>
+<p>从优化的角度来看，提出的$L_{\text{backce}}$的目的是纠正优化，使其类似于集中式学习。假设像素$j$的类别$c$的预测logit为$z_{jc}$，则$L_{\text{ce}}$关于$z_{jc}$的梯度为：</p>
+$$
+\frac{\partial L_{\text{ce}}}{\partial z_{c}^{j}} =
+\begin{cases}
+p_{c}^{j} - 1 & \text{if } y_j = c \\
+p_{c}^{j} & \text{if } y_j \neq c
+\end{cases}
+\tag{6}
+$$<p>其中，$p_{jc} = \frac{e^{z_c}}{\sum_{k=1}^{K} e^{z_k}}$是像素$j$的类别$c$的预测概率。为了简化公式中的符号，使用$z_c$代替$z_{jc}$。对于集中式语义分割，由于数据集中包含所有类别，因此关于$z_c$的优化考虑了像素标签是否为$c$，包含了正方向和负方向的梯度。</p>
+$$
+\frac{\partial L_{backce}}{\partial z_c} = - \frac{e^{z_c}}{\sum_{k=1}^{K} e^{z_k}} \cdot \frac{e^{z_l}}{\sum_{k \neq l} e^{z_k}} = -p_c \cdot \frac{e^{z_l}}{\sum_{k \neq l} e^{z_k}} \approx -p_c \cdot p_l
+$$<p>
+其中，$p_c$和$p_l$分别表示类别$c$和$l$的预测概率。公式表明对于客户端i中的背景像素（即$y_j \not= l$），$L_{backce}$为类别$c$的$logit \ z_c$提供了负方向的优化，这与两个项$p_c$和$p_l$相关。由于本地模型是从包含所有类别信息的聚合全局模型开始的，预测概率可以提供伪标签信息。如果p_c较大，即像素标签y_j为c的预测概率高，则梯度 $\frac{\partial L_{backce}}{\partial z_c} $相对于类别c更大。如果$p_l$较大，因为标签不是$l$，梯度提供了一个更大的数值，使得优化方向指向类别c并远离类别l。</p>
+<p>通过这种方式，修改后的交叉熵损失将本地客户端未包含的类别视为背景类，从而纠正本地优化方向，减轻由于前景-背景不一致而引起的本地更新漂移问题。 为了更具体地理解，假设在客户端 $i$ 的数据集中不存在某些类别 $y_j$ ，则这些类别的预测概率会被视为背景类的概率进行聚合。这种处理方法使得本地客户端能够更好地对齐全局优化目标，改善全局模型的收敛性。 这种方法不仅简化了模型的训练过程，还通过纠正本地优化方向，有效地解决了类别异构问题，从而提升了语义分割任务的整体性能。</p>
+<h4 id="34-local-to-global-pixel-contrastive-learning">3.4. <strong>Local-to-Global Pixel Contrastive Learning</strong></h4>
+<p>传统的 FL 方法，如 FedProx 和 MOON，通过在本地和全局模型之间应用粗糙的约束来解决非独立同分布（non-IID）问题。然而，这些方法对语义分割的密集预测任务是不够的。</p>
+<p>为了改进这一点，作者提出了一种局部到全局像素对比学习方法。在本地更新过程中，从本地和全局模型中提取像素表示。目标是将本地像素表示拉近到同类别的全局表示，同时将它们推离不同类别的表示。这种细粒度的方法有助于对齐本地像素嵌入空间和全局嵌入空间。</p>
+$$
+L^{con}_j=\frac{1}{|P_j|}\sum_{v_+\in P_j}-log\frac{exp(v_l·v_+/τ)}{exp(v_l·v_+/τ)+\sum_{v_-\in N_j}exp(v_l·/v_-τ)}
+$$<p>公式中的元素含义如下：</p>
+<p>$v_l$：局部模型提取的像素表示。</p>
+<p>$c$：像素的语义标签。</p>
+<p>$v_{g+}$：全局模型提取的属于相同标签 $c$ 的像素表示，作为正样本。</p>
+<p>$v_{g-}$：全局模型提取的属于其他类别 $C \setminus c$ 的像素表示，作为负样本。</p>
+<p>$L_{\text{con}}$：局部到全局像素对比损失。</p>
+<p>$\tau$：温度超参数，用于调整对比损失的尺度。</p>
+<p>$P^j$：像素 $j$ 的正样本集合。</p>
+<p>$N^j$：像素 $j$ 的负样本集合。</p>
+<p>在联合学习（FL）训练中，面对类别异构的问题，局部客户端只包含部分语义标签，而负样本不足。背景像素可能包含其他语义类别。因此，作者提出利用全局模型为背景像素提供伪标签，因为聚合的全局模型能够预测所有语义类别。作者设定了一个阈值 θ，如果像素的预测概率大于 θ，则将其标注为对应类别的伪标签。</p>
+$$
+L = L_{\text{backce}} + \lambda L_{\text{con}}
+$$<p>
+其中 $\lambda$ 是一个超参数，用于控制像素对比损失的权重。</p>
+<h3 id="4-实验验证">4. 实验验证</h3>
+<h4 id="41-数据设置">4.1 数据设置</h4>
+<p>作者在四个语义分割数据集上进行了实验，即<code>Cityscapes</code> 、<code>CamVID</code> 、<code>PascalVOC</code>  和 <code>ADE20k</code> ，之后我来简单介绍一下这些数据集。</p>
+<ul>
+<li>**Cityscapes 和 CamVID **：这两个数据集包含街景图像，分别具有19个和11个语义类别。不同于分类任务，语义分割数据集中的图像包含许多类别的对象，这些对象很难拆分。为了生成类异质的数据分区，我们将Cityscapes和CamVID划分为K个子集。每个子集保留一到两个语义类别，其他类别设置为背景。对于Cityscapes和CamVID，K分别设置为19和11。在这种设置下，不同客户端之间存在前景-背景不一致的问题。</li>
+<li>**PascalVOC **：这是一个图像语义分割数据集，包含2,913张图像、20个前景类别和一个背景类别。PascalVOC中的图像较为简单，大多数图像包含一到两个前景类别。为了生成非独立同分布（non-IID）数据分区，我们将其划分为20个子集，每个子集对应一个前景类别。一个子集的背景不包含其他语义类别。</li>
+<li>**ADE20k **：这是一个大规模的语义分割数据集，包含20,210张图像和150个语义类别。语义类别的分布呈长尾分布。为了生成非独立同分布数据分区，我们逐渐将尾部类别拆分为子集，最终生成150个子集。频繁类别的子集不包含尾部类别。一个子集的背景不包含其他类别。</li>
+</ul>
+<p>作者采用了两种常用的语义分割评估指标：</p>
+<ul>
+<li>
+<p><strong>mIoU（mean Intersection-over-Union）</strong>：表示预测像素与真实像素之间的交并比，平均到所有类别上。</p>
+</li>
+<li>
+<p><strong>Pixel Accuracy</strong>：表示正确分类的像素比例。</p>
+</li>
+</ul>
+<h4 id="42-消融实验和对比实验">4.2 消融实验和对比实验</h4>
+<center>表1 - 消融实验和对比实验</center>
+<img src="文献阅读报告.assets/image-20240606190014209.png" alt="image-20240606190014209" style="zoom:50%;" />
+<p>这张表包含两部分a和b，其中a进行了消融实验，证明了fedseg各个部分的有效性，b进行了对比实验，讲fedseg和目前最先进的方法做对比证明fedseg的优越性。</p>
+<p>在表1（a）中，作者展示了FedSeg的主要组成的效果，即$L_{\text{backce}}$和$L_{\text{con}}$的有效性。我们使用FedAvg作为基础的FL框架。表中的FedAvg表示使用标准交叉熵损失的FedAvg方法。FedAvg+$L_{\text{backce}}$表示我们使用修改后的CE损失，而FedAvg + $L_{\text{backce}}+L_{\text{con}}$表示同时使用$L_{\text{backce}}$和$L_{\text{con}}$。我们进行了三次尝试并报告了平均值。实验证明了：</p>
+<ul>
+<li><strong>$L_{backce}$的有效性</strong>: 表1(a)显示了背景聚合CE损失相比于标准CE损失显著提高了分割性能。这表明背景聚合的优化校正对于类别异构的FL语义分割非常重要。对于Cityscapes、CamVID和PascalVOC，$L_{\text{backce}}$将mIoU提高了20%以上。对于困难的大规模ADE20k，$L_{\text{backce}}$也有1.4%的mIoU改善。</li>
+<li><strong>$L_{con}$的有效性</strong>: 表1(a)显示添加$L_{\text{con}}$可以将Cityscapes和CamVID的mIoU提高2.5%到5.2%，证明了$L_{\text{con}}$的有效性。对于PascalVOC，$L_{\text{con}}$的有效性有限。这是因为对比损失需要足够的负样本才能获得良好的性能。然而，PascalVOC是一个简单的数据集，每个客户端只包含一个或两个类别，即负类相当有限，$L_{\text{con}}$起作用。对于困难的大规模ADE20k，mIoU略有提高0.3%。</li>
+</ul>
+<p>作者在表1(b)中将FedSeg与其他FL方法进行了比较，包括FedAvg 、FedProx 、FedDyn 和MOON 。为了公平比较，它们都在局部更新中使用了$L_{\text{backce}}$，因为$L_{\text{backce}}$可以被视为一个强大的基准线。表1(b)显示了先前用于非IID问题的FL方法（FedProx 、FedDyn 、MOON ）的分割性能与FedAvg 相似甚至更低。这表明，对于密集预测任务，整个模型权重或表示的粗略正则化效果不佳。作者的FedSeg采用了细粒度的像素级对比学习，并有效地提高了mIoU分数。</p>
+<h4 id="43-iid数据集实验和loss对比">4.3 IID数据集实验和LOSS对比</h4>
+<center>表2 - IID数据集实验</center>
+<img src="文献阅读报告.assets/image-20240606191402078.png" alt="image-20240606191402078" style="zoom:50%;" />
+<p>作者在表2中报告了FedSeg在IID分布设置下的性能，该设置随机将图像拆分到不同的客户端。结果显示，使用$L_{\text{backce}}$与标准CE损失取得了类似的性能。这是因为$L_{\text{backce}}$旨在纠正优化并解决非IID问题。由于在IID情况下，每个客户端都包含所有类别，因此$L_{\text{backce}}$和标准CE损失（$L_{\text{ce}}$）之间的梯度更新是相似的。添加$L_{\text{con}}$后，性能有所提高，因为它学习了更好的像素嵌入空间。</p>
+<center>表3 - 不同的LOSS对比</center>
+<img src="文献阅读报告.assets/image-20240606191718087.png" alt="image-20240606191718087" style="zoom:50%;" />
+<p>作者进一步将$L_{\text{backce}}$与常用的语义分割损失进行了比较，包括BCELoss、DiceLoss 和Lova´szLoss 。这些语义分割损失只对前景类别的logits进行梯度计算，从而缓解了FL分割的优化分歧问题。如表3所示，这些结构感知的优化准则的分割性能优于标准CE损失。相比这些损失，我们提出的$L_{\text{backce}}$进一步提高了分割性能，表明$L_{\text{backce}}$在优化方向上更接近于集中训练。具体来说，$L_{\text{backce}}$在Cityscapes（non-IID1）和CamVID（non-IID1）上分别超过了最佳竞争对手DiceLoss 15.7%和16.3%。在PascalVOC上，$L_{\text{backce}}$的提升不如其他数据集显著。这是因为$L_{\text{backce}}$解决了背景不一致的问题，更适用于客户端背景包含其他客户端类别的情况。然而，对于PascalVOC，每个客户端并不包含其他客户端的类别。</p>
+<center>表4 - 本地到全局和本地到本地的对比损失比较</center>
+<img src="文献阅读报告.assets/image-20240606192006278.png" alt="image-20240606192006278" style="zoom:50%;" />
+<center>表5 - 像素到像素和像素到区域的对比损失</center>
+<img src="文献阅读报告.assets/image-20240606192015186.png" alt="image-20240606192015186" style="zoom:50%;" />
+<p>表4和表5展示了不同对比损失的效果，基于上述实验现象，作者选取了本地到全局，像素到区域的对比学习损失。</p>
+<h4 id="44-fedseg效果">4.4 FedSeg效果</h4>
+<img src="文献阅读报告.assets/image-20240606194734705.png" alt="image-20240606194734705" style="zoom:50%;" />
+<center>图5 - Cityscapes和CamVID的通信效率比较</center>
+<p>图5显示了训练过程中每轮的mIoU分数，由于作者的FedSeg增加了局部到全局的对比损失，以进行细粒度的局部更新校正，从而持续提高了分割性能和通信效率。如图5所示，在Cityscapes（non-IID1和non-IID2）和CamVID（non-IID1和non-IID2）数据集上，FedSeg在开始阶段的mIoU提升速度显著快于FedAvg。</p>
+<img src="文献阅读报告.assets/image-20240606195122324.png" alt="image-20240606195122324" style="zoom:50%;" />
+<center>图6 - 不同语义类的像素嵌入的可视化</center>
+<p>作者使用t-SNE 对Cityscapes验证数据集中的语义类别像素嵌入进行可视化，如图6所示。作者比较了FedAvg（使用标准CE损失）、FedAvg + $L_{\text{backce}}$和FedAvg + $L_{\text{backce}} + L_{\text{con}}$。图6显示，使用标准CE损失训练的模型学习到的嵌入效果较差，不同语义类别的像素嵌入甚至混杂在一起。使用背景聚合CE损失可以学习到更好的像素嵌入。添加像素对比学习进一步改善了嵌入空间中不同类别的分离度。</p>
+<p>从通信效率和最终像素嵌入的可视化来看，FedSeg相对于其他的FL算法，展现出了很好的优越性，通过像素嵌入的可视化，也能看出作者提出的两处修改也确实起到了作用。</p>
+<h4 id="45-clients的影响">4.5 clients的影响</h4>
+<img src="文献阅读报告.assets/image-20240606195807699.png" alt="image-20240606195807699" style="zoom:50%;" />
+<center>图6 - non-IID数据下参与客户端数量的影响</center>
+<p>图6为不同参与客户端的数量对mIoU的影像图。作者评估了不同数量的参与客户端对FedSeg的影响。具体来说，作者随机选择了5、10、15、20个客户端参与每轮的联邦学习。如图7所示，随着客户端数量的增加，使用标准CE损失的FedAvg 的mIoU性能显著提高，因为每轮参与的更多客户端提供了更多数据，缓解了客户端偏移问题。在图7中，随着客户端数量的增加，FedSeg的性能也略有提升。并且不论在client为多少的情况下， FedAvg + $L_{\text{backce}} + L_{\text{con}}$ 的表现总是最好的。</p>
+<h3 id="5-代码复现">5. 代码复现</h3>
+<img src="文献阅读报告.assets/image-20240606200641454.png" alt="image-20240606200641454" style="zoom:50%;" />
+<center>图7 - 代码复现-客户端总数60-每次参与5</center>
+<p>从github中将代码clone到本地仓库，更改配置文件中的参与客户端总数和每次参与客户端的数量</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 随时输出log: cityscapes</span>
+</span></span><span class="line"><span class="cl"><span class="nv">date_now</span><span class="o">=</span><span class="k">$(</span>date +<span class="s2">&#34;%Y%m%d_%H%M%S&#34;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#python=../envs/torch11/bin/python</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#ROOT_DIR=&#39;../data/cityscapes&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#ROOT_DIR=&#39;../data/cityscapes_split_erase19&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#ROOT_DIR=&#39;../data/cityscapes_split_erase19C2&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ROOT_DIR</span><span class="o">=</span><span class="s1">&#39;/root/workspace/voc&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#ROOT_DIR=&#39;../data/ade20k_erase_150C1&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">LABEL_ONLINE_GEN</span><span class="o">=</span>False
+</span></span><span class="line"><span class="cl"><span class="nv">LOSSTYPE</span><span class="o">=</span>back <span class="c1">#ce,ohem,back,&#39;dice&#39;,&#39;focal&#39;,&#39;lovasz&#39;,&#39;bce&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">WARMSTEP</span><span class="o">=</span><span class="m">20</span>
+</span></span><span class="line"><span class="cl"><span class="nv">FRAC_NUM</span><span class="o">=</span><span class="m">5</span> <span class="c1"># 每次参与的客户端数量</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LOCAL_EP</span><span class="o">=</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="nv">MIXLABLE</span><span class="o">=</span>True
+</span></span><span class="line"><span class="cl"><span class="nv">FEDPROX_MU</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##################</span>
+</span></span><span class="line"><span class="cl"><span class="nv">DISTILL</span><span class="o">=</span>False
+</span></span><span class="line"><span class="cl"><span class="nv">TEMP_DIST</span><span class="o">=</span>0.1
+</span></span><span class="line"><span class="cl"><span class="nv">LAMB_PI</span><span class="o">=</span>0.1
+</span></span><span class="line"><span class="cl"><span class="nv">LAMB_PA</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##################</span>
+</span></span><span class="line"><span class="cl"><span class="nv">RAND_INIT</span><span class="o">=</span>False
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">##################PROTO_NEW</span>
+</span></span><span class="line"><span class="cl"><span class="nv">IS_PROTO</span><span class="o">=</span>True
+</span></span><span class="line"><span class="cl"><span class="nv">MOM_UPDATE</span><span class="o">=</span>False
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">GLOBALEMA</span><span class="o">=</span>False
+</span></span><span class="line"><span class="cl"><span class="nv">PROTO_START_EPOCH</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CON_LAMB</span><span class="o">=</span>0.1
+</span></span><span class="line"><span class="cl"><span class="nv">MOMENTUM</span><span class="o">=</span>0.99
+</span></span><span class="line"><span class="cl"><span class="nv">TEMP</span><span class="o">=</span>0.07
+</span></span><span class="line"><span class="cl"><span class="nv">EPOCH_NUM</span><span class="o">=</span><span class="m">300</span>
+</span></span><span class="line"><span class="cl"><span class="nv">MAX_ANCHOR</span><span class="o">=</span><span class="m">4096</span>
+</span></span><span class="line"><span class="cl"><span class="nv">KMEAN_NUM</span><span class="o">=</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PSEUDO_LABLE</span><span class="o">=</span>True
+</span></span><span class="line"><span class="cl"><span class="nv">PSEUDO_LABEL_START_EPOCH</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LOCALMEM</span><span class="o">=</span>True
+</span></span><span class="line"><span class="cl"><span class="nv">CON_LAMB_LOCAL</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">##################</span>
+</span></span><span class="line"><span class="cl"><span class="nv">DATASET</span><span class="o">=</span>voc <span class="c1">#cityscapes #ade20k  #camvid</span>
+</span></span><span class="line"><span class="cl"><span class="nv">NUM_CLS</span><span class="o">=</span><span class="m">20</span>
+</span></span><span class="line"><span class="cl"><span class="nv">NUM_USERS</span><span class="o">=</span><span class="m">60</span> <span class="c1"># 总共多少个客户端</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">python -u segmentation/federated_main.py <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--gpu<span class="o">=</span><span class="s2">&#34;0&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--dataset<span class="o">=</span><span class="nv">$DATASET</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--root_dir<span class="o">=</span><span class="nv">$ROOT_DIR</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--USE_ERASE_DATA<span class="o">=</span>True <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--num_classes<span class="o">=</span><span class="nv">$NUM_CLS</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--data<span class="o">=</span><span class="s2">&#34;train&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--num_workers<span class="o">=</span><span class="m">4</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--model<span class="o">=</span><span class="s2">&#34;bisenetv2&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--checkpoint<span class="o">=</span><span class="s2">&#34;&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--lr<span class="o">=</span>0.05 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--lr_scheduler<span class="o">=</span><span class="s2">&#34;step&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--iid<span class="o">=</span>False <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--num_users<span class="o">=</span><span class="nv">$NUM_USERS</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--frac_num<span class="o">=</span><span class="nv">$FRAC_NUM</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--epochs<span class="o">=</span><span class="nv">$EPOCH_NUM</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--local_ep<span class="o">=</span><span class="nv">$LOCAL_EP</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--local_bs<span class="o">=</span><span class="m">8</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--is_proto<span class="o">=</span><span class="nv">$IS_PROTO</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--losstype<span class="o">=</span><span class="nv">$LOSSTYPE</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--fedprox_mu<span class="o">=</span><span class="nv">$FEDPROX_MU</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--label_online_gen<span class="o">=</span><span class="nv">$LABEL_ONLINE_GEN</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--distill<span class="o">=</span><span class="nv">$DISTILL</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--distill_lamb_pi<span class="o">=</span><span class="nv">$LAMB_PI</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--distill_lamb_pa<span class="o">=</span><span class="nv">$LAMB_PA</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--rand_init<span class="o">=</span><span class="nv">$RAND_INIT</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--warmstep<span class="o">=</span><span class="nv">$WARMSTEP</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--globalema<span class="o">=</span><span class="nv">$GLOBALEMA</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--temp_dist<span class="o">=</span><span class="nv">$TEMP_DIST</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--mixlabel<span class="o">=</span><span class="nv">$MIXLABLE</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--proto_start_epoch<span class="o">=</span><span class="nv">$PROTO_START_EPOCH</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--con_lamb<span class="o">=</span><span class="nv">$CON_LAMB</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--con_lamb_local<span class="o">=</span><span class="nv">$CON_LAMB_LOCAL</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--momentum<span class="o">=</span><span class="nv">$MOMENTUM</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--temperature<span class="o">=</span><span class="nv">$TEMP</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--max_anchor<span class="o">=</span><span class="nv">$MAX_ANCHOR</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--kmean_num<span class="o">=</span><span class="nv">$KMEAN_NUM</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--pseudo_label<span class="o">=</span><span class="nv">$PSEUDO_LABLE</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--pseudo_label_start_epoch<span class="o">=</span><span class="nv">$PSEUDO_LABEL_START_EPOCH</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--localmem<span class="o">=</span><span class="nv">$LOCALMEM</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--mom_update<span class="o">=</span><span class="nv">$MOM_UPDATE</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--save_frequency<span class="o">=</span><span class="m">20</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--local_test_frequency<span class="o">=</span><span class="m">9999</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--global_test_frequency<span class="o">=</span><span class="m">20</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--USE_WANDB<span class="o">=</span><span class="m">0</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--date_now<span class="o">=</span><span class="si">${</span><span class="nv">date_now</span><span class="si">}</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="p">|</span> tee -a <span class="s2">&#34;save/logs/log-</span><span class="si">${</span><span class="nv">date_now</span><span class="si">}</span><span class="s2">.txt&#34;</span>
+</span></span></code></pre></div><p>修改<code>FRAC_NUM</code>和<code>NUM_USERS</code>，设置通信轮次分别为150，250和300，可以看到，FedSeg可以在较少的通信轮次中达到较低的损失。</p>
+<h3 id="6-论文总结">6. 论文总结</h3>
+<p>作者研究了用于语义分割的类别异构联邦学习。为了解决局部更新过程中前景-背景不一致和客户端漂移的问题，提出了一种基准方法FedSeg，使用了修改后的CE损失和局部到全局的像素对比损失。在四个语义分割数据集上进行了大量实验，以展示FedSeg的有效性。</p>
+<h3 id="7-学习心得">7. 学习心得</h3>
+<p>通过阅读《FedSeg: Class-Heterogeneous Federated Learning for Semantic Segmentation》这篇文章，我学习到了机器学习领域中关于联邦学习和语义分割的前沿知识，加深了我对分布式机器学习系统的理解，在学习FedSeg这篇文章的时候，由于FedSeg采用了FedAvg作为基本的FL框架，我还去阅读了《Communication-Efficient Learning of Deep Networks from Decentralized Data》这篇文章，了解了FedAvg的基本原理和其用于机器学习的效果，汇报中的ppt和本文章中的FedAvg相关的图是从这篇文章中截取的，这篇文章让我了解到了在机器学习领域也可以使用分布式系统，并且对其基本问题给出了基本的解决方案。除此之外，我还掌握了一些关键的技术和方法。具体来说：</p>
+<p><strong>学习到了联邦学习的基本概念和挑战</strong>：</p>
+<ul>
+<li>理解到了联邦学习的基本方法例如Fedavg等。</li>
+<li>联邦学习的目标是在保护数据隐私的前提下，通过多个分布式客户端协作训练一个全局模型。</li>
+<li>立即到了联邦学习和传统机器学习的异同之处，通过进行实际的代码复现进一步加深了对语义分割任务和联邦学习对传统机器学习的优化的理解。</li>
+<li>理解了Non-IID数据（数据分布不均匀）对模型训练的影响，特别是在类异构的场景下，不同客户端的数据包含不同的语义类别，导致训练过程中出现的前景-背景不一致问题。</li>
+</ul>
+<p><strong>加深了对语义分割任务的认识</strong>：</p>
+<ul>
+<li>语义分割是一种密集预测任务，需要对图像中的每个像素进行分类，应用广泛但挑战较大。</li>
+<li>语义分割的模型训练需要像素级的标签数据，这种数据很难被获取到，并且在进行和做训练的时候需要进行用户隐私的保护。</li>
+<li>通过本论文，我了解了现有的语义分割方法以及它们在联邦学习场景下的局限性。</li>
+</ul>
+<p><strong>掌握了改进联邦学习的方法和技术</strong>：</p>
+<ul>
+<li><strong>修改的交叉熵损失 ($ L_{backce} $)</strong>：通过调整损失函数来纠正本地优化方向，从而缓解由数据分布不均匀引起的优化问题。</li>
+<li><strong>像素级对比学习 ($L_{con}$)</strong>：通过局部到全局的对比学习方法，将本地像素嵌入逼近全局语义空间，提高了全局模型的收敛性和精度。</li>
+</ul>
+<p><strong>掌握了实验设计与评估技能</strong>：</p>
+<ul>
+<li>了解了如何设计实验来验证方法的有效性，包括选择合适的数据集、设定对比实验、分析结果和绘制性能曲线。</li>
+<li>学习并掌握了如何使用多种评估指标（如$mIoU$）来衡量模型在不同任务和数据集上的表现。</li>
+</ul>
+<p><strong>进行了模型的部署和云服务器的应用</strong>：</p>
+<ul>
+<li>学会了如何将训练好的模型部署到云服务器上，通过云服务器解决本地配置不足的问题。</li>
+<li>学习到了ssh连接云服务器的基本原理和过程，和它的具体使用方法。</li>
+<li>熟悉了centos的基本环境和操作指令。</li>
+<li>掌握了在云环境中配置和管理服务器的技能，包括服务器的启动与停止、文件权限的设置等。</li>
+<li>理解了如何优化模型的部署，提高服务的效率和稳定性，确保模型在实际应用中的有效性和可靠性。</li>
+</ul>
+<p>总之，这篇文章不仅拓宽了我在机器学习和计算机视觉领域的知识面，还提供了一些实用的方法和技术，帮助我掌握了应对实际问题的技能。同时，通过模型的部署和云服务器的应用实践，我进一步提升了自己的技术水平，能够将所学知识应用于未来的科研和实际工作中。</p>
+
+      </div>
+
+      
+  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2024-12-20T00:00:00.000Z">
+    <span>最近更新于</span>
+    12月 20, 2024</time>
+      
+      
+  
+    
+    
+    
+      
+      
+    
+<div class="pt-1 no-prose w-full">
+  <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+  <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
+    <div class="">
+      
+        <a class="group flex no-underline" href="/teaching/springboot/">
+          <span
+            class="mt-[-0.3rem] me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+          ><span class="ltr:inline rtl:hidden">&larr;</span></span>
+          <span class="flex flex-col">
+            <span
+              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+            >SpringBoot笔记文档</span>
+            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+              
+                12月 21, 2024
+              
+            </span>
+          </span>
+        </a>
+      
+    </div>
+    <div class="">
+      
+    </div>
+  </div>
+</div>
+
+
+
+      
+
+
+
+    </main>
+  </article>
+</div>
+
+    </div>
+    <div class="page-footer">
+      <footer class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <p class="powered-by text-center">
+    © 2024 Me.
+  </p>
+  
+
+
+
+
+
+  <p class="powered-by text-center">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      由<a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a>支持发布——免费<a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">开源</a>网站，为创作者赋能。
+    
+  </p>
+
+</footer>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

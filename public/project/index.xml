@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects | 个人主页</title>
+    <link>http://localhost:1313/project/</link>
+      <atom:link href="http://localhost:1313/project/index.xml" rel="self" type="application/rss+xml" />
+    <description>Projects</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Sat, 26 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu7729264130191091259.png</url>
+      <title>Projects</title>
+      <link>http://localhost:1313/project/</link>
+    </image>
+    
+    <item>
+      <title>Alist私人云盘</title>
+      <link>http://localhost:1313/project/platforms/</link>
+      <pubDate>Sat, 26 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/platforms/</guid>
+      <description>&lt;p&gt;个人搭建的一些资源云盘。如果你需要用的话, 欢迎来找我申请!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Overleaf个人站</title>
+      <link>http://localhost:1313/project/overleaf/</link>
+      <pubDate>Sat, 26 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/overleaf/</guid>
+      <description>&lt;p&gt;个人搭建的overleaf等。如果你需要用的话, 欢迎来找我申请!&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
