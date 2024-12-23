@@ -70,3 +70,11 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v2
+    - name: Deploy to Cloudflare Pages
+      uses: cloudflare/pages-action@v1
+      with:
+        apiToken: ${{ secrets.CF_TOKEN }}
+        accountId: ${{ secrets.CF_ID }}
+        projectName: ${{ secrets.CF_NAME }}
+        directory: ***
+        wranglerVersion: '3'
