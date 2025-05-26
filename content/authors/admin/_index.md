@@ -45,6 +45,9 @@ profiles:
   #   url: https://scholar.google.com/
   # - icon: academicons/orcid
   #   url: https://orcid.org/
+  - icon: custom/bilibili
+    url: https://space.bilibili.com/12345678
+    label: follow me
 
 interests:
   - 计算机科学

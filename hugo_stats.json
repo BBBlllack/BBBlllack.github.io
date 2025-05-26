@@ -1,6 +1,7 @@
 {
   "htmlElements": {
     "tags": [
+      "?xml",
       "a",
       "article",
       "aside",
@@ -264,6 +265,7 @@
       "hover:text-primary",
       "hover:text-primary-600",
       "hover:text-primary-700",
+      "icon",
       "inline-block",
       "inline-flex",
       "inset-0",
@@ -814,11 +816,9 @@
       "deviconPython1",
       "deviconPython2",
       "esp32-dht22硬件部分",
-      "esp32-dht22部分",
       "fedavg算法特点",
       "fedseg-class-heterogeneous-federated-learning-for-semantic-segmentation",
       "flask后端部分",
-      "heading",
       "hide-button",
       "javase基础",
       "javaweb基础1",
@@ -855,7 +855,6 @@
       "五实验工作记录和总结",
       "使用框架开发项目",
       "前端服务器nginx",
-      "后端部分",
       "四系统实现及测试报告",
       "基础前端知识htmlcssjsvuereactelementui",
       "客户端执行",
@@ -877,9 +876,7 @@
       "方法-4",
       "方法-5",
       "方法-6",
-      "服务器端执行",
-      "本项目后端使用flask--echarts-其中flask的recv路由用于接收esp发来的温湿度数据",
-      "温湿度可视化"
+      "服务器端执行"
     ]
   }
 }
