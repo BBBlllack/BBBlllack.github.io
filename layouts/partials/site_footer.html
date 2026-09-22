@@ -1,0 +1,27 @@
+{{/* 本文件覆盖主题模块 blox-tailwind v0.3.1 的 layouts/partials/site_footer.html
+
+     依据：上游采用 MIT License，Copyright (c) 2023-present George Cushen
+     (https://georgecushen.com/)。MIT 明确授予 "the rights to use, copy,
+     modify, merge, publish, distribute, sublicense, and/or sell copies of
+     the Software"，条件是 "The above copyright notice and this permission
+     notice shall be included in all copies or substantial portions of the
+     Software" —— 该版权与许可声明完整保留于本仓库根目录 LICENSE.md。
+
+     改动：移除底部 "Published with Hugo Blox Builder" 推广行（渲染结果中的
+     <p class="powered-by">…Hugo Blox Builder…</p>）。
+     保留：footer-start 钩子、footer block 加载逻辑（minimal.html 内含语言
+     切换、隐私/条款链接、自定义 footer text、版权署名行 site_footer_license）。
+*/}}
+<footer class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200">
+
+  {{ partial "functions/get_hook" (dict "hook" "footer-start" "context" .) }}
+
+  {{/* Load footer block */}}
+  {{ $footer_section_name := site.Params.footer.blox | default "minimal" }}
+  {{ $footer_section_path := printf "components/footers/%s.html" $footer_section_name }}
+  {{ if not (templates.Exists (printf "partials/%s" $footer_section_path)) }}
+    {{ errorf "Check your `params.yaml`. Cannot find footer block at `layouts/partials/%s`" $footer_section_path }}
+  {{ end }}
+  {{ partial $footer_section_path . }}
+
+</footer>
