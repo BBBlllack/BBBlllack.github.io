@@ -1,7 +1,7 @@
 ---
 title: Alist私人云盘
 date: 2024-10-26
-external_link: https://alist.bbblllack.site:5245
+external_link: https://home.syscall.cn:5245/
 tags:
   - Alist
 ---
