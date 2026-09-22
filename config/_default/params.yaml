@@ -14,8 +14,8 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'The highly-customizable Hugo Academic theme powered by Hugo Blox Builder. Easily create your personal academic website.'
-    twitter: 'GetResearchDev'
+    description: '申洪建的个人主页与技术博客 —— Web 开发、网络安全与家庭自托管服务实践。'
+    twitter: ''
   analytics:
     google_analytics: ''
     baidu_tongji: ''
@@ -41,7 +41,7 @@ header:
 footer:
   copyright:
     # notice: '© {year} Me. This work is licensed under {license}'
-    notice: '© {year} Me.'
+    notice: '© {year} 申洪建'
     license:
       enable: false
       allow_derivatives: false

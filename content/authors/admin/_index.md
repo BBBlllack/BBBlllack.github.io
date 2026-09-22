@@ -24,30 +24,30 @@ role: 软件开发工程师
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
-  - name: ""
-    url: https://openai.com/
+  - name: "中国科学院大学"
+    url: https://www.ucas.ac.cn/
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
   - icon: at-symbol
-    url: '1327325289@qq.com'
+    url: 'mailto:1327325289@qq.com'
     label: E-mail Me
   # - icon: brands/x
   #   url: https://twitter.com/GetResearchDev
   # - icon: brands/instagram
   #   url: https://www.instagram.com/
   - icon: brands/github
-    url: https://github.com/bbblllack
+    url: https://github.com/BBBlllack
   # - icon: brands/linkedin
   #   url: https://www.linkedin.com/
   # - icon: academicons/google-scholar
   #   url: https://scholar.google.com/
   # - icon: academicons/orcid
   #   url: https://orcid.org/
-  - icon: custom/bilibili
-    url: https://space.bilibili.com/12345678
-    label: follow me
+  # - icon: custom/bilibili  # 占位链接(bilibili UID 未填) → 已停用, 填入真实 UID 后启用
+  #   url: https://space.bilibili.com/<uid>
+  #   label: follow me
 
 interests:
   - 计算机科学
