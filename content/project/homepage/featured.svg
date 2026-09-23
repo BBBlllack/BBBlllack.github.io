@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="家庭主页项目封面">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071b1b"/><stop offset=".55" stop-color="#087f73"/><stop offset="1" stop-color="#042b3a"/></linearGradient><linearGradient id="house" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d9fff4"/><stop offset="1" stop-color="#6adfc8"/></linearGradient></defs>
+<rect width="1600" height="900" fill="url(#bg)"/><circle cx="1280" cy="180" r="180" fill="#b6fff0" opacity=".16"/><path d="M0 700c260-160 430-70 650-160s390-120 950 40v320H0z" fill="#021b2b" opacity=".55"/>
+<path d="M420 520L800 210l380 310v250H420z" fill="url(#house)" stroke="#c4fff2" stroke-width="10"/><path d="M350 540L800 170l450 370" fill="none" stroke="#dffff8" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/><rect x="710" y="610" width="180" height="170" rx="12" fill="#075c64"/><rect x="510" y="570" width="130" height="100" rx="10" fill="#0a7180"/><rect x="960" y="570" width="130" height="100" rx="10" fill="#0a7180"/>
+<g fill="#9dfff0"><circle cx="560" cy="620" r="12"/><circle cx="600" cy="620" r="12"/><circle cx="1010" cy="620" r="12"/><circle cx="1050" cy="620" r="12"/></g>
+<g stroke="#76ffe3" stroke-width="6" fill="none" opacity=".85"><path d="M240 300h160M1200 300h190M260 340h90M1270 340h110"/><circle cx="200" cy="320" r="22"/><circle cx="1430" cy="320" r="22"/></g>
+<text x="110" y="120" fill="#e7fffa" font-family="sans-serif" font-size="56" font-weight="700">HOME PORTAL</text><text x="110" y="175" fill="#a8ffed" font-family="sans-serif" font-size="28">HOMELAB SERVICES · NETWORK · SELF-HOSTING</text>
+</svg>

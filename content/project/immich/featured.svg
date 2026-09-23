@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Immich 私人照片库项目封面">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#211044"/><stop offset=".5" stop-color="#6b2d91"/><stop offset="1" stop-color="#f06a9b"/></linearGradient><linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity=".08"/></linearGradient></defs>
+<rect width="1600" height="900" fill="url(#bg)"/><circle cx="1250" cy="170" r="260" fill="#ffb0ca" opacity=".2"/><circle cx="250" cy="780" r="330" fill="#6ee7ff" opacity=".12"/>
+<g fill="url(#glass)" stroke="#ffd7ea" stroke-width="6"><rect x="250" y="180" width="430" height="330" rx="28" transform="rotate(-10 250 180)"/><rect x="590" y="150" width="470" height="350" rx="28" transform="rotate(5 590 150)"/><rect x="930" y="240" width="400" height="300" rx="28" transform="rotate(15 930 240)"/></g>
+<g fill="#ffe7f1"><circle cx="540" cy="330" r="65"/><path d="M310 450l125-135 105 90 85-76 90 120z"/><circle cx="830" cy="310" r="55"/><path d="M650 430l120-120 85 72 80-55 115 130z"/><circle cx="1160" cy="390" r="50"/><path d="M980 500l100-105 80 68 80-60 105 120z"/></g>
+<text x="110" y="125" fill="#fff3fa" font-family="sans-serif" font-size="58" font-weight="700">IMMICH</text><text x="110" y="180" fill="#ffd7ea" font-family="sans-serif" font-size="28">PRIVATE PHOTO LIBRARY · AI SEARCH</text>
+</svg>

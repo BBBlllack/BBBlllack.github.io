@@ -67,25 +67,9 @@ education:
       总共选修课程：32.5 学分，其中学位课：23.5 学分。
 
       Courses included:
-      - 操作系统高级教程
-      - 婚姻与继承法
-      - 学术道德与学术写作规范-通论
-      - 网络与系统安全
-      - 学术道德与学术写作规范-分论
-      - 网络协议安全
-      - 芯片及处理器安全
-      - 网络攻防基础
-      - Web安全技术
-      - 自然辩证法概论
-      - 新时代中国特色社会主义理论与实践
-      - 智能计算系统
-      - Java语言程序设计
-      - 硕士学位英语（慕课学习）
-      - 公务员基本制度与法律实务
-      - 人文系列讲座
-      - 文献阅读-网络与系统安全
-      - 操作系统安全
-      - 未来网络与安全
+      操作系统高级教程　网络与系统安全　网络协议安全　芯片及处理器安全<br>
+      网络攻防基础　Web安全技术　智能计算系统　Java语言程序设计<br>
+      文献阅读-网络与系统安全　操作系统安全　未来网络与安全
 
   - area: 计算机科学与技术学士
     institution: 河北工业大学
@@ -141,6 +125,30 @@ skills:
         description: ''
         percent: 70
         icon: devicon/linux
+      - name: Nginx
+        description: 反向代理、TLS 终止与 Web 服务部署
+        percent: 90
+        icon: devicon/nginx
+      - name: Git
+        description: GitHub 协作、版本管理与 CI/CD
+        percent: 90
+        icon: devicon/git
+      - name: 网络安全
+        description: Web 安全测试、CrowdSec 与暴露面收敛
+        percent: 88
+        icon: devicon/linux
+      - name: 网络与 DNS
+        description: IPv4/IPv6、DNS、VPN、端口映射与反向代理
+        percent: 85
+        icon: devicon/linux
+      - name: Bash
+        description: Linux 自动化、服务管理与故障排查
+        percent: 82
+        icon: devicon/bash
+      - name: AI/ML 部署
+        description: Immich 机器学习、CLIP 搜索与远程推理
+        percent: 72
+        icon: devicon/pytorch
 
   - name: Hobbies
     color: '#eeac02'
