@@ -51,6 +51,7 @@ jobs:
       run: |
         echo "Hugo Cache Dir: $(hugo config | grep cachedir)"
         hugo --cleanDestinationDir --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+        # Rebuild and deploy the complete site on every push.
     - name: Generate Pagefind search index
       run: npx pagefind --site "public"
     - name: Upload artifact
