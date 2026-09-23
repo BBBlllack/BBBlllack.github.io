@@ -50,10 +50,11 @@ profiles:
   #   label: follow me
 
 interests:
-  - 计算机科学
-  - 分布式系统
-  - 系统架构设计
-  - "..."
+  - 网络空间安全
+  - Web 安全与渗透测试
+  - 家庭实验室与自托管
+  - Linux、Docker 与 Nginx
+  - 网络架构与系统运维
 
 education:
   - area: 网络空间安全学术硕士
@@ -61,10 +62,30 @@ education:
     date_start: 2025-09-01
     date_end: 2025-09-01
     summary: |
-      GPA: 0/4.0
+      GPA: 3.72/4.0
+
+      总共选修课程：32.5 学分，其中学位课：23.5 学分。
 
       Courses included:
-      - 
+      - 操作系统高级教程
+      - 婚姻与继承法
+      - 学术道德与学术写作规范-通论
+      - 网络与系统安全
+      - 学术道德与学术写作规范-分论
+      - 网络协议安全
+      - 芯片及处理器安全
+      - 网络攻防基础
+      - Web安全技术
+      - 自然辩证法概论
+      - 新时代中国特色社会主义理论与实践
+      - 智能计算系统
+      - Java语言程序设计
+      - 硕士学位英语（慕课学习）
+      - 公务员基本制度与法律实务
+      - 人文系列讲座
+      - 文献阅读-网络与系统安全
+      - 操作系统安全
+      - 未来网络与安全
 
   - area: 计算机科学与技术学士
     institution: 河北工业大学
@@ -125,30 +146,26 @@ skills:
     color: '#eeac02'
     color_border: '#f0bf23'
     items:
-      - name: Hiking
-        description: ''
-        percent: 80
-        icon: person-simple-walk
-      - name: Cats
-        description: ''
-        percent: 70
-        icon: devicon/tomcat
-      - name: Photography
-        description: ''
+      - name: 家庭实验室
+        description: 自托管服务、家庭组网与服务器运维
+        percent: 95
+        icon: devicon/linux
+      - name: 网络安全
+        description: Web 安全、攻防实践与安全加固
+        percent: 90
+        icon: devicon/linux
+      - name: 摄影与照片管理
+        description: 使用 Immich 管理个人照片
         percent: 80
         icon: camera
-      - name: Movie
-        description: ''
-        percent: 80
-        icon: brands/youtube
-      - name: Network
-        description: ''
-        percent: 80
+      - name: 路由与网络
+        description: DNS、VPN、反向代理与家庭网络
+        percent: 85
         icon: devicon/redhat
-      - name: '...'
-        description: ''
-        percent: ''
-        icon: ''
+      - name: 开源软件
+        description: 探索并部署实用的开源项目
+        percent: 85
+        icon: devicon/docker
 
 languages:
   - name: Chinese
@@ -163,6 +180,20 @@ languages:
 #   Only `title`, `awarder`, and `date` are required.
 #   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
 awards:
+  - title: 🎓 三好学生
+    date: '2026-04-01'
+    awarder: 个人荣誉
+    icon:
+    summary: |
+      2026年4月获得三好学生荣誉。
+
+  - title: ⭐ 优秀团员
+    date: '2026-04-01'
+    awarder: 个人荣誉
+    icon:
+    summary: |
+      2026年4月获得优秀团员荣誉。
+
   - title: 💻 中国大学生计算机设计大赛
     # url: https://www.coursera.org/learn/neural-networks-deep-learning
     date: '2023-08-01'

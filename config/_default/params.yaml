@@ -14,7 +14,7 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: '申洪建的个人主页与技术博客 —— Web 开发、网络安全与家庭自托管服务实践。'
+    description: 'BBBlllack 的个人主页与技术博客 —— Web 开发、网络安全与家庭自托管服务实践。'
     twitter: ''
   analytics:
     google_analytics: ''
@@ -41,7 +41,7 @@ header:
 footer:
   copyright:
     # notice: '© {year} Me. This work is licensed under {license}'
-    notice: '© {year} 申洪建'
+    notice: '© {year} BBBlllack'
     license:
       enable: false
       allow_derivatives: false
